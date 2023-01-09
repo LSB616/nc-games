@@ -18,15 +18,22 @@ if (isLoading) {
 };
 
 return (
-<ul className="Review-List">
-{reviews.map((review) => {
-return  <li className="Review-Card" key={review.review_id}>
-        <img src={review.review_img_url} className="Review-Image"></img>
-        <p>{review.title}</p>
+<section class="cards-wrapper">
+{reviews.map((review) => { 
+return  <div class="card-grid-space" key={review.review_id}>
+        <a class="card" href={`https://boardgame-reviews.onrender.com/api/reviews/${review.review_id}`} style={{"--bg-img": `url(${review.review_img_url})`}}>
+        <div>
+        <h1>{review.title}</h1>
         <p>{review.owner}</p>
-        </li>
+        <div class="date">{review.created_at.slice(0, 10)}</div>
+        <div class="tags">
+        <div class="tag">{review.category}</div>
+        </div>
+        </div>
+        </a>
+        </div>
 })}
-</ul>
+</section>
 );
 };
 
