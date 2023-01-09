@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header';
 import Navbar from './components/Navbar';
 import { HomePage } from './components/HomePage';
+import Reviews from './components/Reviews';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />}/>
+        <Route path="/reviews" element={<Reviews />}/>
       </Routes>
     </div>
   );
