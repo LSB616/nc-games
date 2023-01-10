@@ -6,7 +6,11 @@ export default function Votes({ votes, review_id }) {
 
     function incVote(){
         setVotesChange((currVotes) => currVotes + 1);
-        patchReviewByReviewId(review_id, 1);
+        patchReviewByReviewId(review_id, 1)
+        .catch((err) => {
+            setVotesChange((currVotes) => currVotes - 1);
+            console.error(err);
+        });
     };
 
     return (
