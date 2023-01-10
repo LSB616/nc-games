@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getReview } from "../utils/api";
+import Votes from "./Votes";
 
 const Review = () => {
 const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +30,7 @@ return (
     <p>Designer: {review.designer}</p>  
     <p>Reviewer: {review.owner}</p>
     </div>
-    <h3 className="review_votes">Likes: {review.votes}</h3>
+    <Votes votes ={review.votes} review_id={review_id}/>
     <p className="review_body">{review.review_body}</p>
     </div>
 )
