@@ -15,3 +15,9 @@ export const getReview = (review_id) => {
         return res.data;
     });
 };
+
+export const getComments = (review_id) => {
+    return boardGamesApi.get(`/reviews/${review_id}/comments`, {params: { review_id: review_id }}).then((res) => {
+        return res.data.comments;
+    });
+};
