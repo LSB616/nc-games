@@ -9,3 +9,9 @@ export const getReviews = () => {
         return res.data;
     });
 };
+
+export const getReview = (review_id) => {
+    return boardGamesApi.get(`/reviews/${review_id}`, {params: { review_id: review_id }}).then((res) => {
+        return res.data;
+    });
+};

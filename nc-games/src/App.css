@@ -22,6 +22,8 @@
   box-sizing: border-box;
 }
 
+/* Reviews CSS */
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -167,6 +169,28 @@ a {
 .info h1 {
   font-size: 1em;
   font-weight: normal;
+}
+
+/* Reviews/review_id CSS */
+
+.review_img {
+  width: 400px;
+}
+
+.review_title {
+  color:white
+}
+
+.review_details {
+  color:white
+}
+
+.review_votes {
+  color:white
+}
+
+.review_body {
+  color:white
 }
 
 /* Media Queries */

@@ -22,7 +22,7 @@ return (
 <section class="cards-wrapper">
 {reviews.map((review) => { 
 return  <div class="card-grid-space" key={review.review_id}>
-        <a class="card" href={`https://boardgame-reviews.onrender.com/api/reviews/${review.review_id}`} style={{"--bg-img": `url(${review.review_img_url})`}}>
+        <a class="card" href={`/reviews/${review.review_id}`} style={{"--bg-img": `url(${review.review_img_url})`}}>
         <div>
         <h1>{review.title}</h1>
         <p>{review.owner}</p>
