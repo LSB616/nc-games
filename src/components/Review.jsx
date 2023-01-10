@@ -29,7 +29,7 @@ return (
     <p>Designer: {review.designer}</p>  
     <p>Reviewer: {review.owner}</p>
     </div>
-    <h3 className="review_votes">Votes: {review.votes}</h3>
+    <h3 className="review_votes">Likes: {review.votes}</h3>
     <p className="review_body">{review.review_body}</p>
     </div>
 )
