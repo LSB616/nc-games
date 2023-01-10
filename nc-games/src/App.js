@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import Navbar from './components/Navbar';
 import { HomePage } from './components/HomePage';
 import Reviews from './components/Reviews';
+import Review from './components/Review';
 
 
 
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/reviews" element={<Reviews />}/>
+        <Route path="/reviews/:review_id" element={<Review />}/>
       </Routes>
     </div>
   );
