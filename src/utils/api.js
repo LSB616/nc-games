@@ -21,3 +21,14 @@ export const getComments = (review_id) => {
         return res.data.comments;
     });
 };
+
+export const postComment = (review_id, { username, newComment }) => {
+    const commentBody = {username: username, body: newComment}
+    return boardGamesApi.post(`/reviews/${review_id}/comments`, commentBody)
+    .then((res) => {
+        console.log(res);
+        return res.data.comments
+    }).catch((err) => {
+        console.error(err)
+    });
+};

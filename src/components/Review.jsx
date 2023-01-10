@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getReview } from "../utils/api";
 import Comments from "./Comments"
 
-const Review = () => {
+const Review = ({ username }) => {
 const [isLoading, setIsLoading] = useState(true);
 const [review, setReview] = useState('');
 const { review_id } = useParams()
@@ -32,7 +32,7 @@ return (
     </div>
     <h3 className="review_votes">Likes: {review.votes}</h3>
     <p className="review_body">{review.review_body}</p>
-    <Comments review_id={review_id}/>
+    <Comments review_id={review_id} username={username}/>
     </div>
 )
 };
