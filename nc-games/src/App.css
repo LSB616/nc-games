@@ -54,7 +54,7 @@ a {
   color: white;
   border-radius: 1em;
   padding: 1em;
-  /*margin: 2em;*/
+  /* margin: 2em; if they need to be spaced out more */
   display: flex;
   align-items: flex-end;
   background-size: cover;
@@ -169,7 +169,7 @@ a {
   font-weight: normal;
 }
 
-/* MEDIA QUERIES */
+/* Media Queries */
 @media screen and (max-width: 1285px) {
   .cards-wrapper {
     grid-template-columns: 1fr 1fr;
@@ -184,8 +184,8 @@ a {
     justify-content: center;
   }
   .card-grid-space .num {
-    /margin-left: 0;
-    /text-align: center;
+    margin-left: 0;
+    text-align: center;
   }
 }
 
