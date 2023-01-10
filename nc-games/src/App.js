@@ -6,6 +6,7 @@ import { HomePage } from './components/HomePage';
 import Reviews from './components/Reviews';
 
 
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;
