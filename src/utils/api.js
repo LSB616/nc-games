@@ -23,4 +23,19 @@ export const patchReviewByReviewId = (review_id, increment) => {
 export const getComments = (review_id) => {
     return boardGamesApi.get(`/reviews/${review_id}/comments`, {params: { review_id: review_id }}).then((res) => {
         return res.data.comments;
+ });
+ };
+
+
+export const postComment = (review_id, { username, newComment }) => {
+    const commentBody = {username: username, body: newComment}
+    return boardGamesApi.post(`/reviews/${review_id}/comments`, commentBody)
+    .then((res) => {
+        return res.data.amendedComment[0]
+    }).catch((err) => {
+        console.error(err)
     });
+};
+
+
+
