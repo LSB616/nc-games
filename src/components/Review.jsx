@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getReview } from "../utils/api";
 import Votes from "./Votes";
+import Comments from "./Comments"
+
 
 const Review = () => {
 const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +34,7 @@ return (
     </div>
     <Votes votes ={review.votes} review_id={review_id}/>
     <p className="review_body">{review.review_body}</p>
+    <Comments review_id={review_id}/>
     </div>
 )
 };
