@@ -7,19 +7,19 @@ return (
     <span> | </span>
     <Link to='/reviews'>Reviews</Link>
     <span> | </span>
-    <Link to='/strategy'>Strategy</Link>
+    <Link to='/reviews?category=strategy'>Strategy</Link>
     <span> | </span>
-    <Link to='/hidden-roles'>Hidden Roles</Link>
+    <Link to='/reviews?category=hidden-roles'>Hidden Roles</Link>
     <span> | </span>
-    <Link to='/dexterity'>Dexterity</Link>
+    <Link to='/reviews?category=dexterity'>Dexterity</Link>
     <span> | </span>
-    <Link to='/push-your-luck'>Push Your Luck</Link>
+    <Link to='/reviews?category=push-your-luck'>Push Your Luck</Link>
     <span> | </span>
-    <Link to='/roll-and-write'>Roll And Write</Link>
+    <Link to='/reviews?category=roll-and-write'>Roll And Write</Link>
     <span> | </span>
-    <Link to='/deck-building'>Deck Building</Link>
+    <Link to='/reviews?category=deck-building'>Deck Building</Link>
     <span> | </span>
-    <Link to='/engine-building'>Engine Building</Link>
+    <Link to='/reviews?category=engine-building'>Engine Building</Link>
     <p>Hello There!</p>
     <Link to='/login'>Login Here!</Link>
     </nav>

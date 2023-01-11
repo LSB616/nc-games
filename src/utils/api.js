@@ -5,7 +5,7 @@ const boardGamesApi = axios.create({
 });
 
 export const getReviews = (category) => {
-    return boardGamesApi.get(`/reviews`, { params: { category: category } }).then((res) => {
+    return boardGamesApi.get(`/reviews`, { params: { category } }).then((res) => {
         return res.data;
     });
 };
