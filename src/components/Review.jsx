@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getReview } from "../utils/api";
+import Votes from "./Votes";
 import Comments from "./Comments"
 
-const Review = () => {
+
+const Review = ({ username }) => {
 const [isLoading, setIsLoading] = useState(true);
 const [review, setReview] = useState('');
 const { review_id } = useParams()
@@ -30,9 +32,9 @@ return (
     <p>Designer: {review.designer}</p>  
     <p>Reviewer: {review.owner}</p>
     </div>
-    <h3 className="review_votes">Likes: {review.votes}</h3>
+    <Votes votes ={review.votes} review_id={review_id}/>
     <p className="review_body">{review.review_body}</p>
-    <Comments review_id={review_id}/>
+    <Comments review_id={review_id} username={username}/>
     </div>
 )
 };
