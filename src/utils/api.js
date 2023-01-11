@@ -25,8 +25,8 @@ export const getComments = (review_id) => {
 export const postComment = (review_id, { username, newComment }) => {
     const commentBody = {username: username, body: newComment}
     return boardGamesApi.post(`/reviews/${review_id}/comments`, commentBody)
-    .then(({ data }) => {
-        return data.comments
+    .then((res) => {
+        return res.data.amendedComment[0]
     }).catch((err) => {
         console.error(err)
     });

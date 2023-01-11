@@ -7,11 +7,12 @@ const CommentAdder = ({ review_id, username, setComments }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const commentBody = { username, newComment }
-        postComment(review_id, commentBody).then((latestComment) => {
-        setComments((currComments) => {
-            return [latestComment, ...currComments];
+        return postComment(review_id, commentBody)
+        .then((latestComment) => {
+        setComments((currComments) => {            
+        return [latestComment, ...currComments];
         });
-    });
+        });
     };
 
 return (
