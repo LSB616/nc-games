@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 const Reviews = () => {
 const [isLoading, setIsLoading] = useState(true);
 const [reviews, setReviews] = useState([]);
+const [sortBy, setSortBy] = useState('');
 
 useEffect(() => {
     setIsLoading(true);
-    getReviews().then(({ reviews }) => {
+    getReviews(sortBy).then(({ reviews }) => {
         setReviews(reviews);
         setIsLoading(false);
     });
-}, []);
+}, [sortBy]);
 
 if (isLoading) {
     return <p className="Loading">Loading...</p>;
@@ -20,6 +21,17 @@ if (isLoading) {
 
 return (
 <section class="cards-wrapper">
+<section>
+    <select className="sortby-dropdown" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+    <option value="title">Title</option>
+    <option value="owner">Reviewer</option>
+    <option value="category">Category</option>
+    <option value="designer">Designer</option>
+    <option value="votes">Likes</option>
+    <option value="created_at">Date</option>
+    <option value="comment_count">Comment Count</option>
+    </select>
+</section>
 {reviews.map((review) => { 
 return  <div class="card-grid-space" key={review.review_id}>
         <Link to={`/reviews/${review.review_id}`} className="card-link">
