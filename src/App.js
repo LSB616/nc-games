@@ -6,6 +6,7 @@ import { HomePage } from './components/HomePage';
 import Reviews from './components/Reviews';
 import Review from './components/Review';
 import { useState } from 'react';
+import CategoryPage from './components/CategoryPage';
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<HomePage />}/>
         <Route path="/reviews" element={<Reviews />}/>
         <Route path="/reviews/:review_id" element={<Review username={newUsername}/>}/>
+        <Route path="/categories" element={<CategoryPage />} />
       </Routes>
     </div>
   );
