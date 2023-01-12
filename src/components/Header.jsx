@@ -1,3 +1,3 @@
 export function Header() {
-    return <h1 className="header">Northen Board Gamers</h1>;
+    return <h1 className="header">Northern Board Gamers</h1>;
   }
