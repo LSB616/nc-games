@@ -8,8 +8,6 @@ const [reviews, setReviews] = useState([]);
 const [sortByParams, setSortByParams] = useSearchParams('');
 const sortbyQuery = sortByParams.get('sort_by');
 
-console.log(sortbyQuery)
-
 useEffect(() => {
     setIsLoading(true);
     getReviews(sortByParams).then(({ reviews }) => {
