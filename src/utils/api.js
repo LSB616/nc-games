@@ -37,5 +37,11 @@ export const postComment = (review_id, { username, newComment }) => {
     });
 };
 
+export const getUser = (username) => {
+    return boardGamesApi.get(`/users/${username}`).then((res) => {
+        return res.data
+    });
+};
+
 
 

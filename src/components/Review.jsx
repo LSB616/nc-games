@@ -5,7 +5,7 @@ import Votes from "./Votes";
 import Comments from "./Comments"
 
 
-const Review = ({ username }) => {
+const Review = () => {
 const [isLoading, setIsLoading] = useState(true);
 const [review, setReview] = useState('');
 const { review_id } = useParams()
@@ -34,7 +34,7 @@ return (
     </div>
     <Votes votes ={review.votes} review_id={review_id}/>
     <p className="review_body">{review.review_body}</p>
-    <Comments review_id={review_id} username={username}/>
+    <Comments review_id={review_id} />
     </div>
 )
 };
