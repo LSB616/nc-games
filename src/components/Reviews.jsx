@@ -24,8 +24,8 @@ if (isLoading) {
 
 const setSearch = (sort_by, order) => {
     const newParams = new URLSearchParams(searchParams);
-    if (sort_by) {newParams.set('sort_by', sort_by)};
-    if(order) {newParams.set('order', order)};
+    if (sort_by) newParams.set('sort_by', sort_by);
+    if(order) newParams.set('order', order);
     setSearchParams(newParams);
   };
 
