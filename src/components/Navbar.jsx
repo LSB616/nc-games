@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
 return (
     <div className='navbar'>
+        <Link to='/' className='navbar-links'>
         <img src={require("../images/Logo-3-black.png")} className="logo" alt="D20 Dice"/>
+        </Link>
     <nav>
     <Link to='/' className='navbar-links'>Home</Link>
     <Link to='/reviews' className='navbar-links'>Reviews</Link>
