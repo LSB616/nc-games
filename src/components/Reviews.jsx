@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getReviews } from "../utils/api";
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 
 const Reviews = () => {
 const [isLoading, setIsLoading] = useState(true);
