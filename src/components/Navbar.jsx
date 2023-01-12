@@ -7,13 +7,13 @@ return (
     <nav>
     <Link to='/' className='navbar-links'>Home</Link>
     <Link to='/reviews' className='navbar-links'>Reviews</Link>
-    <Link to='/strategy' className='navbar-links'>Strategy</Link>
-    <Link to='/hidden-roles' className='navbar-links'>Hidden Roles</Link>
-    <Link to='/dexterity' className='navbar-links'>Dexterity</Link>
-    <Link to='/push-your-luck' className='navbar-links'>Push Your Luck</Link>
-    <Link to='/roll-and-write' className='navbar-links'>Roll And Write</Link>
-    <Link to='/deck-building' className='navbar-links'>Deck Building</Link>
-    <Link to='/engine-building' className='navbar-links'>Engine Building</Link>
+    <Link to='/reviews?category=strategy' className='navbar-links'>Strategy</Link>
+    <Link to='/reviews?category=hidden-roles' className='navbar-links'>Hidden Roles</Link>
+    <Link to='/reviews?category=dexterity' className='navbar-links'>Dexterity</Link>
+    <Link to='/reviews?category=push-your-luck' className='navbar-links'>Push Your Luck</Link>
+    <Link to='/reviews?category=roll-and-write' className='navbar-links'>Roll And Write</Link>
+    <Link to='/reviews?category=deck-building' className='navbar-links'>Deck Building</Link>
+    <Link to='/reviews?category=engine-building' className='navbar-links'>Engine Building</Link>
     <Link to='/login' className='navbar-links login'>Login Here!</Link>
     </nav>
     </div>
