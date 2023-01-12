@@ -7,32 +7,44 @@ const [isLoading, setIsLoading] = useState(true);
 const [reviews, setReviews] = useState([]);
 const [sortByParams, setSortByParams] = useSearchParams('');
 const sortbyQuery = sortByParams.get('sort_by');
+const [sortBy, setSortBy] = useState('category')
+const [orderBy, setOrderBy] = useState(null)
+
+
 
 useEffect(() => {
     setIsLoading(true);
-    getReviews(sortByParams).then(({ reviews }) => {
+    getReviews(sortbyQuery).then(({ reviews }) => {
         setReviews(reviews);
         setIsLoading(false);
     });
-}, [sortByParams]);
+}, [sortBy]);
 
 if (isLoading) {
     return <p className="Loading">Loading...</p>;
 };
 
 return (
-<section class="cards-wrapper">
+<div>
 <section>
-    <select className="sortby-dropdown" value={sortByParams} onChange={(e) => setSortByParams(e.target.value)}>
+    <select className="sortby-dropdown" value={sortByParams} onChange={(e) => {
+        setSortBy(e.target.value.split('=')[1])
+        setSortByParams(e.target.value)
+        }}>
     <option value="sort_by=title">Title</option>
     <option value="sort_by=owner">Reviewer</option>
     <option value="sort_by=category">Category</option>
     <option value="sort_by=designer">Designer</option>
-    <option value="sort_by=votes">Likes</option>
     <option value="sort_by=created_at">Date</option>
-    <option value="sort_by=comment_count">Comment Count</option>
+    </select>
+    <select className="orderby-dropdown" value={orderBy} onChange={(e) => {
+        setOrderBy(e.target.value)
+    }}>
+    <option value="order=asc">Ascending</option>
+    <option value="order=desc">Descending</option>
     </select>
 </section>
+<section class="cards-wrapper">
 {reviews.map((review) => { 
 return  <div className="card-grid-space" key={review.review_id}>
         <Link to={`/reviews/${review.review_id}`} className="card-link">
@@ -50,6 +62,7 @@ return  <div className="card-grid-space" key={review.review_id}>
         </div>
 })}
 </section>
+</div>
 );
 };
 
