@@ -7,18 +7,16 @@ import { deleteComment } from '../utils/api';
 const Comments = ({ review_id }) => {
     const [comments, setComments] = useState([]);
     const { user, setUser } = useContext(UserContext);
-    const [commentsNumber, setCommentsNumber] = useState(0);
 
 useEffect(() => {
     getComments(review_id).then((commentsFromApi) => {
         setComments(commentsFromApi);
-        setCommentsNumber(commentsFromApi.length)
     });
 }, []);
 
 return (
     <section className='comments-section'>
-    <h2>Comments: {commentsNumber}</h2>
+    <h2>Comments</h2>
     <CommentAdder setComments={setComments} review_id={review_id}/>
     <ul className="comments_list">
     {comments.map((comment) => {
@@ -31,7 +29,7 @@ return (
             </li>
             <button className="commentdelete-button" onClick={() => {
                 if (user.username === comment.author) {
-                    return deleteComment(comment.comment_id), setCommentsNumber(commentsNumber => commentsNumber - 1);
+                    return deleteComment(comment.comment_id)
                 } else {
                     console.log('did not work');
                 }
