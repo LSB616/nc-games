@@ -1,15 +1,19 @@
 import { useContext, useState } from "react";
 import { UserContext } from '../contexts/User';
 import { postComment } from "../utils/api";
+import LoginPage from './LoginPage';
 
 const CommentAdder = ({ review_id, setComments }) => {
     const [newComment, setNewComment] = useState('');
     const { user } = useContext(UserContext);
-    const username = user.username;
+
+    if (!user) {
+        return <LoginPage />
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const commentBody = { username, newComment }
+        const commentBody = { user: user.username, newComment }
         return postComment(review_id, commentBody)
         .then((latestComment) => {
         setComments((currComments) => {            
