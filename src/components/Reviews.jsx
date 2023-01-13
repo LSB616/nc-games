@@ -8,24 +8,26 @@ const [reviews, setReviews] = useState([]);
 const [searchParams, setSearchParams] = useSearchParams();
 const sortbyQuery = searchParams.get('sort_by');
 const orderQuery = searchParams.get('order');
+const categoryQuery = searchParams.get('category');
 
 
 useEffect(() => {
     setIsLoading(true);
-    getReviews(sortbyQuery, orderQuery).then(({ reviews }) => {
+    getReviews(sortbyQuery, orderQuery, categoryQuery).then(({ reviews }) => {
         setReviews(reviews);
         setIsLoading(false);
     });
-}, [sortbyQuery, orderQuery]);
+}, [sortbyQuery, orderQuery, categoryQuery]);
 
 if (isLoading) {
     return <p className="Loading">Loading...</p>;
 };
 
-const setSearch = (sort_by, order) => {
+const setSearch = (sort_by, order, category) => {
     const newParams = new URLSearchParams(searchParams);
     if (sort_by) newParams.set('sort_by', sort_by);
     if(order) newParams.set('order', order);
+    if(category) newParams.set('category', category);
     setSearchParams(newParams);
   };
 
@@ -51,11 +53,11 @@ return (
     <option value="desc">Descending</option>
     </select>
 </section>
-<section class="cards-wrapper">
+<section className="cards-wrapper">
 {reviews.map((review) => { 
 return  <div className="card-grid-space" key={review.review_id}>
         <Link to={`/reviews/${review.review_id}`} className="card-link">
-        <a className="card" style={{"--bg-img": `url(${review.review_img_url})`}}>
+        <div className="card" style={{"--bg-img": `url(${review.review_img_url})`}}>
         <div>
         <h1>{review.title}</h1>
         <p>{review.owner}</p>
@@ -64,7 +66,7 @@ return  <div className="card-grid-space" key={review.review_id}>
         <div className="tag">{review.category}</div>
         </div>
         </div>
-        </a>
+        </div>
         </Link>
         </div>
 })}

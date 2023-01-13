@@ -9,6 +9,7 @@ import { useContext, useState } from 'react';
 import CategoryPage from './components/CategoryPage';
 import LoginPage from './components/LoginPage';
 import { UserContext } from './contexts/User';
+import UserPage from './components/UserPage';
 
 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/reviews/:review_id" element={<Review />}/>
         <Route path="/categories" element={<CategoryPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/users/:username" element={<UserPage />} />
       </Routes>
     </div>
   );
