@@ -6,14 +6,17 @@ import LoginPage from './LoginPage';
 const CommentAdder = ({ review_id, setComments }) => {
     const [newComment, setNewComment] = useState('');
     const { user } = useContext(UserContext);
+    let username = '';
 
     if (!user) {
         return <LoginPage />
+    } else {
+        username = user.username;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const commentBody = { user: user.username, newComment }
+        const commentBody = { username, newComment }
         return postComment(review_id, commentBody)
         .then((latestComment) => {
         setComments((currComments) => {            
@@ -27,7 +30,6 @@ return (
         <label htmlFor="newComment">Add a comment</label>
         <textarea id="newComment" value={newComment} onChange={(e) => setNewComment(e.target.value)} className="comment-textarea" rows="5" cols="10"></textarea>
         <button className="commentAdder-button">Add</button>
-        <button className="commentdelete-button">Delete</button>
     </form>
 );
 };
