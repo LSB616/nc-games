@@ -12,7 +12,7 @@ useEffect(() => {
 }, []);
 
 return (
-    <section>
+    <section className='comments-section'>
     <h2>Comments</h2>
     <CommentAdder setComments={setComments} review_id={review_id}/>
     <ul className="comments_list">

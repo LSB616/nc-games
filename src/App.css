@@ -2,9 +2,8 @@
 
 .App {
   text-align: center;
-  background-color: rgb(0, 0, 0);
   color: white;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(176, 141, 87, 0.7));
+  background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(176, 141, 87, 0.7));
 }
 
 * {
@@ -289,24 +288,137 @@ a {
 
 /* Reviews/review_id CSS */
 
+.review{
+  width: 100%;
+  height:max-content;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7));
+  background-position: center;
+  background-size: cover;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.review-top {
+padding-top: 80px;
+padding-bottom: 80px;
+display: flex;
+align-items: center;
+box-sizing: border-box;
+}
+
+.review-bottom {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
 .review_img {
-  width: 400px;
+  width: 55em;
+  grid-column: span 2;
+  grid-row: span 2;
+  border-radius: 20%;
 }
 
 .review_title {
-  color:white
+  font-size: 5em;
 }
 
-.review_details {
-  color:white
+.review_p {
+  padding-left: 10%;
 }
 
 .review_votes {
-  color:white
+  padding-left: 20rem;
 }
 
 .review_body {
-  color:white
+  grid-column: span 2;
+  font-size: 1.5em;
+}
+
+.comments-section h2 {
+  font-size: 3em;
+  padding-bottom: 0.7em;
+}
+
+.comments {
+  grid-row: 3;
+  grid-column: span 4;
+}
+
+.commentAdder {
+display: flex;
+align-items: center;
+box-sizing: border-box;
+}
+
+.commentAdder label {
+  font-size: 3em;
+  padding-right: 5em;
+}
+
+.commentAdder-button,
+.commentdelete-button {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 0.6em;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.commentAdder-button:hover, .commentdelete-button:hover {
+  box-shadow: 0 0 40px 40px rgba(176, 141, 87) inset;
+}
+
+.commentAdder-button:hover,
+.commentAdder-button:focus,
+.commentdelete-button:hover,
+.commentdelete-button:focus {
+  color: rgb(255, 255, 255);
+  outline: 0;
+}
+
+.comment-textarea {
+  width: 500px;
+  height: 100px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  border-image: none;
+  border-radius: 6px 6px 6px 6px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+  color: #444444;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  padding: 5px 8px;
+  transition: background-color 0.2s ease 0s;
+}
+
+.comment-textarea:focus {
+  background: none repeat scroll 0 0 #FFFFFF;
+  outline-width: 0;
 }
 
 /* Media Queries */

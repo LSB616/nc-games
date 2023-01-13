@@ -21,8 +21,9 @@ const CommentAdder = ({ review_id, setComments }) => {
 return (
     <form className="commentAdder" onSubmit={handleSubmit}>
         <label htmlFor="newComment">Add a comment</label>
-        <textarea id="newComment" value={newComment} onChange={(e) => setNewComment(e.target.value)}></textarea>
-        <button>Add</button>
+        <textarea id="newComment" value={newComment} onChange={(e) => setNewComment(e.target.value)} className="comment-textarea" rows="5" cols="10"></textarea>
+        <button className="commentAdder-button">Add</button>
+        <button className="commentdelete-button">Delete</button>
     </form>
 );
 };

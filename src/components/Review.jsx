@@ -24,18 +24,26 @@ if (isLoading) {
 };
 
 return (
-    <div className="review">
-    <img src={`${review.review_img_url}`} className="review_img" alt="Image Associated with Board Game"></img>
+    <section className="review">
+    <div className="review-top">
     <h2 className="review_title">{review.title}</h2>
-    <div className="review_details">
+    <div className="review_p">
     <p>Category: {review.category}</p>
     <p>Designer: {review.designer}</p>  
     <p>Reviewer: {review.owner}</p>
     </div>
-    <Votes votes ={review.votes} review_id={review_id}/>
+    <div className="review_votes">
+    <Votes votes ={review.votes} review_id={review_id} />
+    </div>
+    </div>
+    <div className="review-bottom">
     <p className="review_body">{review.review_body}</p>
+    <img src={`${review.review_img_url}`} className="review_img" alt="Image Associated with Board Game"></img>
+    <div className="comments">
     <Comments review_id={review_id} />
     </div>
+    </div>
+    </section>
 )
 };
 
