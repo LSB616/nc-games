@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getComments } from '../utils/api';
 import CommentAdder from './CommentAdder';
 
-const Comments = ({ review_id, username }) => {
+const Comments = ({ review_id }) => {
     const [comments, setComments] = useState([]);
 
 useEffect(() => {
@@ -14,7 +14,7 @@ useEffect(() => {
 return (
     <section className='comments-section'>
     <h2>Comments</h2>
-    <CommentAdder username={username} setComments={setComments} review_id={review_id}/>
+    <CommentAdder setComments={setComments} review_id={review_id}/>
     <ul className="comments_list">
     {comments.map((comment) => {
         return (

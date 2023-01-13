@@ -5,14 +5,16 @@ import Navbar from './components/Navbar';
 import { HomePage } from './components/HomePage';
 import Reviews from './components/Reviews';
 import Review from './components/Review';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import CategoryPage from './components/CategoryPage';
+import LoginPage from './components/LoginPage';
+import { UserContext } from './contexts/User';
 
 
 
 function App() {
-
-  const [newUsername, setUsername] = useState('jessjelly');
+  const { user } = useContext(UserContext)
+  console.log(user)
 
   return (
     <div className="App">
@@ -20,8 +22,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/reviews" element={<Reviews />}/>
-        <Route path="/reviews/:review_id" element={<Review username={newUsername}/>}/>
+        <Route path="/reviews/:review_id" element={<Review />}/>
         <Route path="/categories" element={<CategoryPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   );
