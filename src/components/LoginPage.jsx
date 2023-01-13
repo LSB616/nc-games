@@ -12,18 +12,18 @@ const LoginPage = () => {
             e.preventDefault();
             return getUser(username)
             .then((res) => {
-                setUser(res)
+                setUser(res.user)
             }).catch((err) => {
                 console.error(err);
             })
         };
 
-        if (user.username === ''){
+        if (!user){
             return (
-                <form className="login-page" onChange={(e) => {setUsername(e.target.value)}}>
+                <form className="login-page" onSubmit={handleSubmit}>
                     <label htmlFor="ursername">Username:</label>
-                    <input type="textarea" id="username" placeholder="Username"></input>
-                    <button type="submit" onSubmit={handleSubmit}>Login</button>
+                    <input type="textarea" id="username" placeholder="Username" value={username} onChange={(e) => {setUsername(e.target.value)}} />
+                    <button type="submit">Login</button>
                 </form>)
                 } else {
                 return (<UserPage />)
