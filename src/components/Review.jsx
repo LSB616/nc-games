@@ -10,6 +10,8 @@ const [isLoading, setIsLoading] = useState(true);
 const [review, setReview] = useState('');
 const { review_id } = useParams()
 
+
+
 useEffect(() => {
     setIsLoading(true);
     getReview(review_id).then(({ review }) => {
