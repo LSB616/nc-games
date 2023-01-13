@@ -372,8 +372,7 @@ box-sizing: border-box;
   padding-right: 5em;
 }
 
-.commentAdder-button,
-.commentdelete-button {
+.commentAdder-button{
   box-sizing: border-box;
   appearance: none;
   background-color: transparent;

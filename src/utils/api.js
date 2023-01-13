@@ -43,5 +43,7 @@ export const getUser = (username) => {
     });
 };
 
-
+export const deleteComment = (comment_id) => {
+    return boardGamesApi.delete(`/comments/${comment_id}`)
+}
 
