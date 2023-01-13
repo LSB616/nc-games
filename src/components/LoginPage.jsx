@@ -7,32 +7,33 @@ const LoginPage = () => {
     const { user, setUser } = useContext(UserContext);
     const username = user.username;
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(e);
-        return getUser(e.target.value)
-            .then((userData) => {
-                setUser(userData.username);
-                if (!userData.username === '') (<UserPage />)
-            })
-            .catch((err) => {
-                if (err) setUser('')
-                console.error(err);
-            })
-        }
+    const handleSubmit = (username) => {
+        console.log(username)
+    }
 
-    if (username === '') {
         return (
-        <form className="login-page" onSubmit={handleSubmit}>
+        <form className="login-page" onChange={(e) => {setUser({username: e.target.value})}}>
             <label htmlFor="ursername">Username:</label>
-            <input type="text" id="username" placeholder="Username"></input>
-            <button type="submit" value="submit">Login</button>
+            <input type="textarea" id="username" placeholder="Username"></input>
+            <button type="submit" onSubmit={handleSubmit(username)}>Login</button>
         </form>)
-        } else {
-        return (
-            <UserPage />
-        )
-    };
 };
 
 export default LoginPage;
+
+// const handleSubmit = (username) => {
+//     // console.log(username, '<---- username')
+//     if (username === ''){
+
+//     } else {
+//     return getUser(username.username)
+//         .then((userData) => {
+//             // console.log(userData, '<-- user data')
+//             if (!userData.username === '') (<UserPage />)
+//         })
+//         .catch((err) => {
+//             if (err) setUser('')
+//             console.error(err);
+//         })
+//     }
+// }
