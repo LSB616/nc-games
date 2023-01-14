@@ -10,6 +10,8 @@ import CategoryPage from './components/CategoryPage';
 import LoginPage from './components/LoginPage';
 import { UserContext } from './contexts/User';
 import UserPage from './components/UserPage';
+import LoadingPage from './components/LoadingPage';
+import Footer from './components/Footer';
 
 
 
@@ -26,7 +28,9 @@ function App() {
         <Route path="/categories" element={<CategoryPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/users/:username" element={<UserPage />} />
+        <Route path="/users" element={<LoadingPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 };

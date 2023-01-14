@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getReviews } from "../utils/api";
 import { Link, useParams, useSearchParams } from 'react-router-dom';
+import LoadingPage from "./LoadingPage";
 
 const Reviews = () => {
 const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +21,7 @@ useEffect(() => {
 }, [sortbyQuery, orderQuery, categoryQuery]);
 
 if (isLoading) {
-    return <p className="Loading">Loading...</p>;
+    return <LoadingPage />;
 };
 
 const setSearch = (sort_by, order, category) => {

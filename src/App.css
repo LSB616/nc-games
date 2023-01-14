@@ -434,6 +434,41 @@ box-sizing: border-box;
   outline-width: 0;
 }
 
+
+/* Footer CSS */
+
+.footer {
+  padding-top: 100px;
+  background-color: #000;
+}
+
+/* loading page CSS */
+
+.loading-page {
+  background-color: #000;
+}
+
+.loading-h2 {
+  padding-bottom: 100px;
+  padding-top: 50px;
+  font-size: 3em;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  margin-top: 3em;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Media Queries */
 @media screen and (max-width: 1285px) {
   .cards-wrapper {
@@ -470,5 +505,11 @@ box-sizing: border-box;
   }
   .info h1 {
     margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
   }
 }
