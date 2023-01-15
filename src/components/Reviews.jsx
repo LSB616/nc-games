@@ -36,6 +36,11 @@ const setSearch = (sort_by, order, category) => {
 return (
 <div>
 <section>
+    <Link to="/reviews/addreview">
+    <button>Add Review</button>
+    </Link>
+</section>
+<section>
     <select className="sortby-dropdown" value={sortbyQuery} onChange={(e) => {
         setSearch(e.target.value, null)
         }}>

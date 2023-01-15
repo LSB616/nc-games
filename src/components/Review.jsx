@@ -15,6 +15,7 @@ const { review_id } = useParams()
 useEffect(() => {
     setIsLoading(true);
     getReview(review_id).then(({ review }) => {
+        console.log(review);
         setReview(review);
         setIsLoading(false);
     });

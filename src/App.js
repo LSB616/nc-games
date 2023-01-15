@@ -12,6 +12,7 @@ import { UserContext } from './contexts/User';
 import UserPage from './components/UserPage';
 import LoadingPage from './components/LoadingPage';
 import Footer from './components/Footer';
+import ReviewAdder from './components/ReviewAdder';
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/users/:username" element={<UserPage />} />
         <Route path="/users" element={<LoadingPage />} />
+        <Route path="/reviews/addreview" element={<ReviewAdder />} />
       </Routes>
       <Footer />
     </div>
