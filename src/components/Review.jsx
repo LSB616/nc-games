@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getReview } from "../utils/api";
 import Votes from "./Votes";
 import Comments from "./Comments"
+import LoadingPage from "./LoadingPage";
 
 
 const Review = () => {
@@ -15,7 +16,6 @@ const { review_id } = useParams()
 useEffect(() => {
     setIsLoading(true);
     getReview(review_id).then(({ review }) => {
-        console.log(review);
         setReview(review);
         setIsLoading(false);
     });
@@ -23,7 +23,7 @@ useEffect(() => {
 
 
 if (isLoading) {
-    return <p className="Loading">Loading...</p>;
+    return <LoadingPage />;
 };
 
 return (

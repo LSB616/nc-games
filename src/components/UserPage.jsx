@@ -2,6 +2,7 @@ import { UserContext } from '../contexts/User';
 import { useContext, useEffect, useState } from "react";
 import { getReviews } from "../utils/api";
 import { Link } from 'react-router-dom';
+import LoadingPage from "./LoadingPage";
 
 const UserPage = () => {
     const { user, setUser } = useContext(UserContext);
@@ -17,6 +18,10 @@ const UserPage = () => {
             setIsLoading(false);
         });
     }, []);
+
+    if (isLoading) {
+        return <LoadingPage />;
+    };
 
     return (
     <div className='userpage'>

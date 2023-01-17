@@ -20,8 +20,19 @@ export const patchReviewByReviewId = (review_id, increment) => {
     return boardGamesApi.patch(`/reviews/${review_id}`, { inc_votes: increment })
 };
 
-export const postReview = (review) => {
-    return boardGamesApi.post('/reviews', review)
+export const postReview = (user, title, gameDesigner, reviewBody, category, image) => {
+    const newReview ={
+        title: title,
+        designer: gameDesigner,
+        owner: user,
+        review_img_url: image,
+        review_body: reviewBody,
+        category: category
+    }
+
+    return boardGamesApi.post('/reviews', newReview).then((res) => {
+        return res.data
+    });
 };
 
 
