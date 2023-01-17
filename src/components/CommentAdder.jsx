@@ -20,7 +20,7 @@ const CommentAdder = ({ review_id, setComments }) => {
         return postComment(review_id, commentBody)
         .then((latestComment) => {
         setComments((currComments) => {            
-        return [latestComment, ...currComments];
+        return [latestComment, ...currComments]
         });
         });
     };

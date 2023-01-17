@@ -3,28 +3,35 @@ import { getComments } from '../utils/api';
 import CommentAdder from './CommentAdder';
 import { UserContext } from '../contexts/User';
 import { deleteComment } from '../utils/api';
+import Popup from 'react-popup';
 
 const Comments = ({ review_id }) => {
     const [comments, setComments] = useState([]);
     const { user, setUser } = useContext(UserContext);
-    const [sameOwner, setSameOwner] = useState();
+    const [sameOwner, setSameOwner] = useState(false);
+    const [commentdelete, setCommentDelete] = useState(false);
+    let username = '';
 
 useEffect(() => {
-    setSameOwner(false);
     getComments(review_id).then((commentsFromApi) => {
         setComments(commentsFromApi);
     });
 }, []);
 
 const removeComment = (comment) => {
-    if (user.username === comment.author) {
-        setSameOwner(true);
-        return deleteComment(comment.comment_id)
-    } else {
-        console.log('did not work');
-    };
-};
+    if (username === comment.author) {
+        setSameOwner(true);}
 
+    if (sameOwner) {
+        return deleteComment(comment.comment_id)
+        .then(() => {
+        setCommentDelete(true);
+        setSameOwner(false);
+        }).catch(() => {
+            console.log('something went wrong')
+        })
+    }
+};
 
 
 return (
@@ -34,13 +41,13 @@ return (
     <ul className="comments_list">
     {comments.map((comment) => {
         return (
-            <div className='comment'>
-            <li key={comment.comment_id}>
+            <div className='comment' key={comment.comment_id}>
+            <li>
             <p>{comment.author} {comment.created_at.slice(0, 10)}</p>
             <p>{comment.body}</p>
             <p>Likes: {comment.votes}</p>    
             </li>
-            <button className="commentdelete-button" onClick={removeComment(comment)}>Delete</button>
+            <button className="commentdelete-button" value="" onClick={removeComment(comment)}>Delete</button>
             </div>
         )
     })}
