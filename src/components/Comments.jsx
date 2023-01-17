@@ -7,12 +7,25 @@ import { deleteComment } from '../utils/api';
 const Comments = ({ review_id }) => {
     const [comments, setComments] = useState([]);
     const { user, setUser } = useContext(UserContext);
+    const [sameOwner, setSameOwner] = useState();
 
 useEffect(() => {
+    setSameOwner(false);
     getComments(review_id).then((commentsFromApi) => {
         setComments(commentsFromApi);
     });
 }, []);
+
+const removeComment = (comment) => {
+    if (user.username === comment.author) {
+        setSameOwner(true);
+        return deleteComment(comment.comment_id)
+    } else {
+        console.log('did not work');
+    };
+};
+
+
 
 return (
     <section className='comments-section'>
@@ -27,13 +40,7 @@ return (
             <p>{comment.body}</p>
             <p>Likes: {comment.votes}</p>    
             </li>
-            <button className="commentdelete-button" onClick={() => {
-                if (user.username === comment.author) {
-                    return deleteComment(comment.comment_id)
-                } else {
-                    console.log('did not work');
-                }
-            }}>Delete</button>
+            <button className="commentdelete-button" onClick={removeComment(comment)}>Delete</button>
             </div>
         )
     })}
