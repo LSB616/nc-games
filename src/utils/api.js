@@ -35,6 +35,10 @@ export const postReview = (user, title, gameDesigner, reviewBody, category, imag
     });
 };
 
+export const deleteReview = (review_id) => {
+    return boardGamesApi.delete(`/reviews/${review_id}`)
+};
+
 
 export const getComments = (review_id) => {
     return boardGamesApi.get(`/reviews/${review_id}/comments`, {params: { review_id: review_id }}).then((res) => {
