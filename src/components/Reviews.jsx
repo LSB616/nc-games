@@ -36,7 +36,7 @@ const setSearch = (sort_by, order, category) => {
 return (
 <div>
 <section>
-    <Link to="/reviews/addreview">
+    <Link to="/reviews/add-review">
     <button>Add Review</button>
     </Link>
 </section>

@@ -28,6 +28,9 @@ const UserPage = () => {
     <section className='userdetails'> 
     <h2>Hello There! {user.username}</h2>
     <img src={user.avatar_url} alt="user profile image"></img>
+    <Link to="/reviews/add-review">
+    <button>Add Review</button>
+    </Link>
     </section>
     <h3>Your Reviews</h3>
     <section className="cards-wrapper">

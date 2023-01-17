@@ -30,7 +30,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/users/:username" element={<UserPage />} />
         <Route path="/users" element={<LoadingPage />} />
-        <Route path="/reviews/addreview" element={<ReviewAdder />} />
+        <Route path="/reviews/add-review" element={<ReviewAdder />} />
       </Routes>
       <Footer />
     </div>
