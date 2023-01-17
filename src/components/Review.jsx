@@ -14,15 +14,20 @@ const [isLoading, setIsLoading] = useState();
 const [reviewDeleted, setReviewDeleted] = useState();
 const [review, setReview] = useState('');
 const { review_id } = useParams();
+const [sameOwner, setSameOwner] = useState();
 
 
 
 useEffect(() => {
     setIsLoading(true);
+    setSameOwner(false);
     getReview(review_id).then(({ review }) => {
         setReview(review);
         setIsLoading(false);
         setReviewDeleted(false);
+        if(user.username === review.owner){
+            setSameOwner(true);
+        }
     });
 }, [review_id]);
 
@@ -46,8 +51,7 @@ if (reviewDeleted) {
     return <Reviews />;
 };
 
-
-if (user.username === review.owner) {
+if (sameOwner) {
     return (
         <section className="review">
         <div className="review-top">
@@ -70,8 +74,9 @@ if (user.username === review.owner) {
         </div>
         </div>
         </section>
-    )
-}
+    );
+};
+
 
 return (
     <section className="review">
