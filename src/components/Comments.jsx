@@ -11,9 +11,7 @@ const Comments = ({ review_id }) => {
     const [comments, setComments] = useState([]);
     const { user, setUser } = useContext(UserContext);
     const [sameOwner, setSameOwner] = useState(false);
-    const [newComment, setNewComment] = useState('');
     const [commentToDelete, setCommentToDelete] = useState('');
-    const [commentsUpdated, setCommentsUpdated] = useState('');
 
 useEffect(() => {
     getComments(review_id).then((commentsFromApi) => {
@@ -45,32 +43,14 @@ useEffect(() => {
 //     setCommentToDelete(comment)
 // };
 
-const handleCommentAdd = (newComment) => {
-    setCommentsUpdated(false)
-    const commentBody = {username: user.username, body: newComment}
-    return postComment(review_id, commentBody)
-    .then((latestComment) => {
-    setComments((currComments) => {        
-    setCommentsUpdated(true)    
-    return [latestComment, ...currComments]
-    });
-    }).catch((err) => {
-        console.log(err)
-    });
-};
+
 
 
 if (user.loggedIn) {
     return (
         <section className='comments-section'>
         <h2>Comments</h2>
-        <form className="commentAdder" onSubmit={handleCommentAdd}>
-            <label htmlFor="newComment">Add a comment</label>
-            <textarea id="newComment" className="comment-textarea" rows="5" cols="10"></textarea>
-            <button className="commentAdder-button" onClick={(e) => {
-                e.preventDefault();
-                setNewComment(e.target.value)}}>Add</button>
-        </form>
+        <CommentAdder setComments={setComments} review_id={review_id}/>
         <form className='commentDelete'>
         <ul className="comments_list">
         {comments.map((comment) => {
