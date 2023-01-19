@@ -11,10 +11,9 @@ const Comments = ({ review_id }) => {
     const [comments, setComments] = useState([]);
     const { user, setUser } = useContext(UserContext);
     const [sameOwner, setSameOwner] = useState(false);
-    const [commentdelete, setCommentDelete] = useState(false);
     const [newComment, setNewComment] = useState('');
-    const [clickedButton, setClickedButton] = useState('');
     const [commentToDelete, setCommentToDelete] = useState('');
+    const [commentsUpdated, setCommentsUpdated] = useState('');
 
 useEffect(() => {
     getComments(review_id).then((commentsFromApi) => {
@@ -22,45 +21,42 @@ useEffect(() => {
     });
 }, []);
 
-const handleCommentEvent = () => {
+// const handleCommentEvent = () => {
+//     if (clickedButton === 'addComment') {
 
-    if (clickedButton === 'addComment') {
-        const addComment = () => {
-            const commentBody = {username: user.username, body: newComment}
-            return postComment(review_id, commentBody)
-            .then((latestComment) => {
-            setComments((currComments) => {            
-            return [latestComment, ...currComments]
-            });
-            });
-        };
-    } else if (clickedButton === 'deleteComment') {
-        const removeComment = () => {
-            if (user.username === commentToDelete.author) {
-                setSameOwner(true);}
-        
-            if (sameOwner) {
-                return deleteComment(commentToDelete.comment_id)
-                .then(() => {
-                setCommentDelete(true);
-                setSameOwner(false);
-                }).catch(() => {
-                    console.log('something went wrong')
-                })
-            }
-        };    
-    }
-};
+//     } else if (clickedButton === 'deleteComment') {
+//             if (user.username === commentToDelete.author) {
+//                 setSameOwner(true);}
+//             if (sameOwner) {
+//                 return deleteComment(commentToDelete.comment_id)
+//                 .then(() => {
+//                 setCommentDelete(true);
+//                 setSameOwner(false);
+//                 }).catch(() => {
+//                     console.log('something went wrong')
+//                 })
+//             } 
+//     }
+// };
 
 
-const handleCommentDelete = (comment) => {
-    setClickedButton('deleteComment')
-    setCommentToDelete(comment)
-};
+// const handleCommentDelete = (comment) => {
+//     setClickedButton('deleteComment')
+//     setCommentToDelete(comment)
+// };
 
-const handleCommentAdd = (e) => {
-    setClickedButton('addComment')
-    setNewComment(e)
+const handleCommentAdd = (newComment) => {
+    setCommentsUpdated(false)
+    const commentBody = {username: user.username, body: newComment}
+    return postComment(review_id, commentBody)
+    .then((latestComment) => {
+    setComments((currComments) => {        
+    setCommentsUpdated(true)    
+    return [latestComment, ...currComments]
+    });
+    }).catch((err) => {
+        console.log(err)
+    });
 };
 
 
@@ -68,11 +64,14 @@ if (user.loggedIn) {
     return (
         <section className='comments-section'>
         <h2>Comments</h2>
-        <form className="commentAdder" onSubmit={handleCommentEvent}>
+        <form className="commentAdder" onSubmit={handleCommentAdd}>
             <label htmlFor="newComment">Add a comment</label>
             <textarea id="newComment" className="comment-textarea" rows="5" cols="10"></textarea>
-            <button className="commentAdder-button" onClick={(e) => handleCommentAdd(e.target.value)}>Add</button>
+            <button className="commentAdder-button" onClick={(e) => {
+                e.preventDefault();
+                setNewComment(e.target.value)}}>Add</button>
         </form>
+        <form className='commentDelete'>
         <ul className="comments_list">
         {comments.map((comment) => {
             return (
@@ -82,11 +81,12 @@ if (user.loggedIn) {
                 <p>{comment.body}</p>
                 <p>Likes: {comment.votes}</p>    
                 </li>
-                <button className="commentdelete-button" onClick={handleCommentDelete}>Delete</button>
+                <button className="commentdelete-button">Delete</button>
                 </div>
             )
         })}
         </ul>
+        </form>
         </section>
     )
 }
