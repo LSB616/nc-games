@@ -12,13 +12,15 @@ const LoginPage = () => {
             e.preventDefault();
             return getUser(username)
             .then((res) => {
-                setUser(res.user)
+                let login = {loggedIn: true, username: res.user.username, name: res.user.name, avatar_url: res.user.avatar_url}
+                setUser(login)
             }).catch((err) => {
                 console.error(err);
             })
         };
 
-        if (!user){
+
+        if (!user.loggedIn){
             return (
                 <form className="login-page" onSubmit={handleSubmit}>
                     <label htmlFor="ursername">Username:</label>

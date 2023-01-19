@@ -24,12 +24,12 @@ useEffect(() => {
     getReview(review_id).then(({ review }) => {
         setIsLoading(false);
         setReviewDeleted(false);
-        if(user && user.username === review.owner){
+        if(user.loggedIn && user.username === review.owner){
             setSameOwner(true);
         }
         setReview(review);
     }).catch(() => {
-        console.log('something went wrong');
+        console.log('something went wrong in review');
     });
 }, [review_id]);
 
