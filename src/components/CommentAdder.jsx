@@ -6,17 +6,14 @@ import LoginPage from './LoginPage';
 const CommentAdder = ({ review_id, setComments }) => {
     const [newComment, setNewComment] = useState('');
     const { user } = useContext(UserContext);
-    let username = '';
 
-    if (!user) {
+    if (!user.loggedIn) {
         return <LoginPage />
-    } else {
-        username = user.username;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const commentBody = { username, newComment }
+        let commentBody = {username: user.username, body: newComment}
         return postComment(review_id, commentBody)
         .then((latestComment) => {
         setComments((currComments) => {            

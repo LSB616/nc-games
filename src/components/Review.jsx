@@ -22,12 +22,14 @@ useEffect(() => {
     setIsLoading(true);
     setSameOwner(false);
     getReview(review_id).then(({ review }) => {
-        setReview(review);
         setIsLoading(false);
         setReviewDeleted(false);
-        if(user.username === review.owner){
+        if(user.loggedIn && user.username === review.owner){
             setSameOwner(true);
         }
+        setReview(review);
+    }).catch(() => {
+        console.log('something went wrong in review');
     });
 }, [review_id]);
 
@@ -61,7 +63,7 @@ if (sameOwner) {
         <p>Designer: {review.designer}</p>  
         <p>Reviewer: {review.owner}</p>
         </div>
-        <button className="delete-review-button" onClick={deleteContent}>Delete Review</button>
+        <button className="delete-review-button" value="" onClick={deleteContent}>Delete Review</button>
         <div className="review_votes">
         <Votes votes ={review.votes} review_id={review_id} />
         </div>

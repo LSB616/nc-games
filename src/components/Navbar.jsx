@@ -5,7 +5,7 @@ import { UserContext } from '../contexts/User';
 const Navbar = () => {
 const { user } = useContext(UserContext);
 
-if (!user) {
+if (!user.loggedIn) {
 return (
     <div className='navbar'>
         <Link to='/' className='navbar-links'>

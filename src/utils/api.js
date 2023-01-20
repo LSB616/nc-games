@@ -47,11 +47,10 @@ export const getComments = (review_id) => {
  };
 
 
-export const postComment = (review_id, { username, newComment }) => {
-    const commentBody = {username: username, body: newComment}
-    return boardGamesApi.post(`/reviews/${review_id}/comments`, commentBody)
+export const postComment = (review_id, newComment) => {
+    return boardGamesApi.post(`/reviews/${review_id}/comments`, newComment)
     .then((res) => {
-        return res.data.amendedComment[0]
+        return res.data.amendedComment[0];
     }).catch((err) => {
         console.error(err)
     });

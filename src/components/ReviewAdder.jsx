@@ -36,7 +36,7 @@ const ReviewAdder = () => {
         })
     };
 
-    if (!user) {
+    if (!user.loggedIn) {
         return <LoginPage />
     };
 
