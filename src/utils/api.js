@@ -66,3 +66,7 @@ export const deleteComment = (comment_id) => {
     return boardGamesApi.delete(`/comments/${comment_id}`)
 }
 
+export const patchCommentByCommentId = (comment_id, increment) => {
+    return boardGamesApi.patch(`/comments/${comment_id}`, { inc_votes: increment })
+};
+
