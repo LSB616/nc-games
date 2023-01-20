@@ -9,7 +9,6 @@ import Popup from 'react-popup';
 const Comments = ({ review_id }) => {
     const [comments, setComments] = useState([]);
     const { user, setUser } = useContext(UserContext);
-    const [sameOwner, setSameOwner] = useState();
     const [commentToDelete, setCommentToDelete] = useState('');
 
 useEffect(() => {
@@ -19,25 +18,18 @@ useEffect(() => {
 }, []);
 
 
-async function handleSubmit (e){
+const handleSubmit = (e) => {
     e.preventDefault();
-    
     if (user.username === commentToDelete.author) {
-        setSameOwner(true)}
-
-
-    if (sameOwner) {
     return deleteComment(commentToDelete.comment_id)
-        .then(() => {
-        setSameOwner(false);
-        setComments((currComments) => {            
-            return [...currComments];
-            });
-        }).catch((err) => {
-        console.log(err)
-        console.log('something went wrong')
-        })
-        } 
+    .then((res) => {
+    getComments(review_id).then((commentsFromApi) => {
+    setComments(commentsFromApi);
+    });
+    }).catch((err) => {
+    console.log(err)
+    })
+    }
 };
 
 
@@ -82,7 +74,6 @@ return (
             <p>{comment.body}</p>
             <p>Likes: {comment.votes}</p>    
             </li>
-            <button className="commentdelete-button">Delete</button>
             </div>
         )
     })}
