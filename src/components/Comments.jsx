@@ -44,6 +44,7 @@ if (user.loggedIn) {
         <form className='commentDelete' onSubmit={handleSubmit}>
         <ul className="comments_list">
         {comments.map((comment) => {
+            if (user.username === comment.author){
             return (
                 <div className='comment' key={comment.comment_id}>
                 <li>
@@ -54,6 +55,17 @@ if (user.loggedIn) {
                 <button className="commentdelete-button" type="submit" value={commentToDelete} onClick={() => {setCommentToDelete(comment)}}>Delete</button>
                 </div>
             )
+            } else {
+                return (
+                    <div className='comment' key={comment.comment_id}>
+                    <li>
+                    <p>{comment.author} {comment.created_at.slice(0, 10)}</p>
+                    <p>{comment.body}</p>
+                    <p>Likes: {comment.votes}</p>    
+                    </li>
+                    </div>
+                )
+            }
         })}
         </ul>
         </form>
