@@ -3,14 +3,13 @@ import { getComments } from '../utils/api';
 import CommentAdder from './CommentAdder';
 import { UserContext } from '../contexts/User';
 import { deleteComment } from '../utils/api';
-import { postComment } from "../utils/api";
 import LoginPage from './LoginPage';
 import Popup from 'react-popup';
 
 const Comments = ({ review_id }) => {
     const [comments, setComments] = useState([]);
     const { user, setUser } = useContext(UserContext);
-    const [sameOwner, setSameOwner] = useState(false);
+    const [sameOwner, setSameOwner] = useState();
     const [commentToDelete, setCommentToDelete] = useState('');
 
 useEffect(() => {
@@ -19,29 +18,28 @@ useEffect(() => {
     });
 }, []);
 
-// const handleCommentEvent = () => {
-//     if (clickedButton === 'addComment') {
 
-//     } else if (clickedButton === 'deleteComment') {
-//             if (user.username === commentToDelete.author) {
-//                 setSameOwner(true);}
-//             if (sameOwner) {
-//                 return deleteComment(commentToDelete.comment_id)
-//                 .then(() => {
-//                 setCommentDelete(true);
-//                 setSameOwner(false);
-//                 }).catch(() => {
-//                     console.log('something went wrong')
-//                 })
-//             } 
-//     }
-// };
+async function handleSubmit (e){
+    e.preventDefault();
+    
+    if (user.username === commentToDelete.author) {
+        setSameOwner(true)}
 
 
-// const handleCommentDelete = (comment) => {
-//     setClickedButton('deleteComment')
-//     setCommentToDelete(comment)
-// };
+    if (sameOwner) {
+    return deleteComment(commentToDelete.comment_id)
+        .then(() => {
+        setSameOwner(false);
+        setComments((currComments) => {            
+            return [...currComments];
+            });
+        }).catch((err) => {
+        console.log(err)
+        console.log('something went wrong')
+        })
+        } 
+};
+
 
 
 
@@ -51,7 +49,7 @@ if (user.loggedIn) {
         <section className='comments-section'>
         <h2>Comments</h2>
         <CommentAdder setComments={setComments} review_id={review_id}/>
-        <form className='commentDelete'>
+        <form className='commentDelete' onSubmit={handleSubmit}>
         <ul className="comments_list">
         {comments.map((comment) => {
             return (
@@ -61,7 +59,7 @@ if (user.loggedIn) {
                 <p>{comment.body}</p>
                 <p>Likes: {comment.votes}</p>    
                 </li>
-                <button className="commentdelete-button">Delete</button>
+                <button className="commentdelete-button" type="submit" value={commentToDelete} onClick={() => {setCommentToDelete(comment)}}>Delete</button>
                 </div>
             )
         })}
