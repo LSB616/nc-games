@@ -4,6 +4,7 @@ import CommentAdder from './CommentAdder';
 import { UserContext } from '../contexts/User';
 import { deleteComment } from '../utils/api';
 import LoginPage from './LoginPage';
+import CommentVotes from './CommentVotes';
 import Popup from 'react-popup';
 
 const Comments = ({ review_id }) => {
@@ -61,7 +62,7 @@ if (user.loggedIn) {
                     <li>
                     <p>{comment.author} {comment.created_at.slice(0, 10)}</p>
                     <p>{comment.body}</p>
-                    <p>Likes: {comment.votes}</p>    
+                    <CommentVotes comment_id={comment.comment_id} votes={comment.votes}/>    
                     </li>
                     </div>
                 )
