@@ -31,13 +31,20 @@ const ReviewEditPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        patchReviewForUpdate({title: title, designer: gameDesigner, review_body: reviewBody, category: category, review_img_url: image}, review_id)
+        .then(() => {
+            setSubmit(true);
+        })
+        .catch((err) => {
+            console.error(err);
+        })
     };
 
     if (isLoading) {
         return <LoadingPage />;
     };
 
+    if (!submit) {
     return (
     <form className='add-review-form' onSubmit={handleSubmit}>
     <label htmlFor='review-title'>Title: </label>
@@ -62,6 +69,16 @@ const ReviewEditPage = () => {
     <button type="submit">Submit</button>
 </form>
     )
+    } else if (submit) {
+        return (
+            <div className='review-update'>
+            <h2>Thank you for updating your review!</h2>
+            <p>Click below to go to your review</p>
+            <Link to={`/reviews/${reviewId}`}>
+            <button>Click Here!</button>
+            </Link>
+            </div>)
+    }
 };
 
 export default ReviewEditPage;
