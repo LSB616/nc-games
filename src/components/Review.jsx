@@ -8,6 +8,7 @@ import LoadingPage from "./LoadingPage";
 import Reviews from "./Reviews";
 
 
+
 const Review = () => {
 const { user } = useContext(UserContext);
 const [isLoading, setIsLoading] = useState();
@@ -64,6 +65,9 @@ if (sameOwner) {
         <p>Reviewer: {review.owner}</p>
         </div>
         <button className="delete-review-button" value="" onClick={deleteContent}>Delete Review</button>
+        <Link to={`/reviews/${review_id}/edit-review`}>
+        <button className="delete-review-button">Edit Review</button>
+        </Link>
         <div className="review_votes">
         <Votes votes ={review.votes} review_id={review_id} />
         </div>

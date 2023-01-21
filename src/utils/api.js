@@ -20,6 +20,10 @@ export const patchReviewByReviewId = (review_id, increment) => {
     return boardGamesApi.patch(`/reviews/${review_id}`, { inc_votes: increment })
 };
 
+export const patchReviewForUpdate = (review_id, reviewUpdate) => {
+    return boardGamesApi.patch(`/reviews/${review_id}/edit-review`, reviewUpdate)
+}
+
 export const postReview = (user, title, gameDesigner, reviewBody, category, image) => {
     const newReview ={
         title: title,
