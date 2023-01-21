@@ -1,8 +1,9 @@
 import { UserContext } from '../contexts/User';
 import { useContext, useEffect, useState } from "react";
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getReview, deleteReview } from "../utils/api";
 import LoadingPage from "./LoadingPage";
+import { patchReviewForUpdate } from '../utils/api';
 
 const ReviewEditPage = () => {
     const { user } = useContext(UserContext);
@@ -31,7 +32,7 @@ const ReviewEditPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        patchReviewForUpdate({title: title, designer: gameDesigner, review_body: reviewBody, category: category, review_img_url: image}, review_id)
+        patchReviewForUpdate(review_id, {title: title, designer: gameDesigner, review_body: reviewBody, category: category, review_img_url: image})
         .then(() => {
             setSubmit(true);
         })
@@ -73,8 +74,8 @@ const ReviewEditPage = () => {
         return (
             <div className='review-update'>
             <h2>Thank you for updating your review!</h2>
-            <p>Click below to go to your review</p>
-            <Link to={`/reviews/${reviewId}`}>
+            <p>Click below to go to your updated review.</p>
+            <Link to={`/reviews/${review_id}`}>
             <button>Click Here!</button>
             </Link>
             </div>)
