@@ -74,3 +74,6 @@ export const patchCommentByCommentId = (comment_id, increment) => {
     return boardGamesApi.patch(`/comments/${comment_id}`, { inc_votes: increment })
 };
 
+export const postUser = (user) => {
+    return boardGamesApi.post(`/create-account`, user)
+}
