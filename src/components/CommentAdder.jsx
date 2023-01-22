@@ -19,6 +19,7 @@ const CommentAdder = ({ review_id, setComments }) => {
         setComments((currComments) => {            
         return [latestComment, ...currComments];
         });
+        setNewComment('')
         });
     };
 

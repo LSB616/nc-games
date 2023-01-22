@@ -446,6 +446,8 @@ box-sizing: border-box;
 
 .loading-page {
   background-color: #000;
+  width: 100%;
+  height: 100vh;
 }
 
 .loading-h2 {
@@ -469,7 +471,121 @@ box-sizing: border-box;
   }
 }
 
+
+/* Login page CSS */
+
+.login-page {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0,0,0,0.9)), url(./images/AdobeStock_421558379.jpeg);
+  background-position: center;
+  background-size: cover;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.login-page h1 {
+  font-size: 100px;
+  padding-top: 30px;
+  margin-bottom: -50px;
+}
+
+.login-form-box {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  align-items: center;
+}
+
+.login-form {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  width: 400px;
+}
+
+.login-page input {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.flex-input {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.login-page label {
+  flex-basis: 130px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.login-page button {
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #b08d57;
+  border: none;
+  margin: 10px 0;
+  color: #000;
+}
+
+.login-page button:hover {
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+}
+
+.extras-flex-container {
+  display: flex;
+}
+
+.extras-flex-container div {
+  flex: 1;
+}
+
+.extras-flex-container a {
+  text-decoration: none;
+}
+
+.extras-flex-container a:hover {
+  color:#000000;
+}
+
+.extras-flex-container span{
+padding-left: 5px;
+}
+
+.create-account h1 {
+  font-size: 100px;
+  padding-top: 0px;
+  margin-bottom: 20px;
+}
+
+.create-account button {
+  width: 50%;
+}
+
+.create-account button:hover {
+  cursor: pointer;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+
+
+
 /* Media Queries */
+
+@media all and (max-width: 480px) {
+  .flex-input {
+    flex-direction: column;
+  }
+  label, h1 {
+    flex-basis: 0;
+  }
+}
+
 @media screen and (max-width: 1285px) {
   .cards-wrapper {
     grid-template-columns: 1fr 1fr;
