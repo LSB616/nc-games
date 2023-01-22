@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 const CreateAccount = () => {
     const { user, setUser } = useContext(UserContext);
-    const [username, setUsername] = useState();
-    const [name, setName] = useState();
-    const [avatar, setAvatar] = useState();
+    const [username, setUsername] = useState('');
+    const [name, setName] = useState('');
+    const [avatar, setAvatar] = useState('');
     const [isLoading, setIsLoading] = useState();
     const [accountCreated, setAccountCreated] = useState();
 
@@ -21,8 +21,8 @@ const CreateAccount = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         return postUser({username: username, name: name, avatar_url: avatar})
-        .then(({ username, name, avatar_url }) => {
-            let login = {loggedIn: true, username: username, name: name, avatar_url: avatar_url}
+        .then((res) => {
+            let login = {loggedIn: true, username: res.data.username, name: res.data.name, avatar_url: res.data.avatar_url}
             setAccountCreated(true);
             setUser(login);
         })
