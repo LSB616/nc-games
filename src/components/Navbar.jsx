@@ -42,7 +42,7 @@ return (
     <Link to='/reviews?category=deck-building' className='navbar-links'>Deck Building</Link>
     <Link to='/reviews?category=engine-building' className='navbar-links'>Engine Building</Link>
     <img src={user.avatar_url} className="navbar-avatar"/>
-    <Link to={`/user/${user.username}`} className='navbar-links-username'>{user.name}!</Link>
+    <Link to={`/users/${user.username}`} className='navbar-links-username'>{user.name}!</Link>
     </nav>
     </div>
     )
