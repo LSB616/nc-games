@@ -3,7 +3,7 @@ import { getComments } from '../utils/api';
 import CommentAdder from './CommentAdder';
 import { UserContext } from '../contexts/User';
 import { deleteComment } from '../utils/api';
-import LoginPage from './LoginPage';
+import LoginPageForComments from './LoginPageForComments';
 import CommentVotes from './CommentVotes';
 import Popup from 'react-popup';
 
@@ -50,7 +50,7 @@ if (user.loggedIn) {
                 <div className='comment' key={comment.comment_id}>
                 <li>
                 <p>{comment.author} {comment.created_at.slice(0, 10)}</p>
-                <p>{comment.body}</p>
+                <h4>{comment.body}</h4>
                 <p>Likes: {comment.votes}</p>    
                 </li>
                 <button className="commentdelete-button" type="submit" value={commentToDelete} onClick={() => {setCommentToDelete(comment)}}>Delete</button>
@@ -61,7 +61,7 @@ if (user.loggedIn) {
                     <div className='comment' key={comment.comment_id}>
                     <li>
                     <p>{comment.author} {comment.created_at.slice(0, 10)}</p>
-                    <p>{comment.body}</p>
+                    <h4 className='comment-body'>{comment.body}</h4>
                     <CommentVotes comment_id={comment.comment_id} votes={comment.votes}/>    
                     </li>
                     </div>
@@ -77,7 +77,7 @@ if (user.loggedIn) {
 return (
     <section className='comments-section'>
     <h2>Comments</h2>
-    <LoginPage />
+    <LoginPageForComments />
     <ul className="comments_list">
     {comments.map((comment) => {
         return (

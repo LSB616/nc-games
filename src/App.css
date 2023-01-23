@@ -389,7 +389,6 @@ box-sizing: border-box;
 
 .comments-section h2 {
   font-size: 3em;
-  padding-bottom: 0.7em;
 }
 
 .comments {
@@ -398,9 +397,11 @@ box-sizing: border-box;
 }
 
 .commentAdder {
+padding-top: 0.7em;
 display: flex;
 align-items: center;
 box-sizing: border-box;
+justify-content: center;
 }
 
 .commentAdder label {
@@ -470,7 +471,25 @@ box-sizing: border-box;
   outline-width: 0;
 }
 
+.comment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.comment li {
+  list-style-type: none; 
+}
+
+.comment p {
+  font-size: 19px;
+}
+
+.comment h4 {
+  font-size: 25px;
+  padding: 0;
+  font-weight: normal;
+}
 /* Footer CSS */
 
 .footer {
@@ -608,6 +627,61 @@ padding-left: 5px;
   cursor: pointer;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
+}
+
+/* Login page for Comments CSS */
+
+.login-page-for-comments {
+  width: 100%;
+  background-size: cover;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.login-page-for-comments h2 {
+  font-size: 18px;
+  color: #000;
+}
+
+.login-page-for-comments input {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.flex-input {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.login-page-for-comments label {
+  flex-basis: 130px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.login-page-for-comments button {
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #b08d57;
+  border: none;
+  margin: 10px 0;
+  color: #000;
+}
+
+.login-page-for-comments button:hover {
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+}
+
+.login-page-for-comments a {
+  color: #000;
+}
+
+.login-page-for-comments a:hover {
+  color: #b08d57
 }
 
 /* UserPage CSS */
