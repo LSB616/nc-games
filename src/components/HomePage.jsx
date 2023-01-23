@@ -20,6 +20,30 @@ export function HomePage () {
                     <h4>Categories</h4>
                 </div>
                 </Link>
+                {/* <div class="grid">
+                <ul id="hexGrid">
+                <li class="hex">
+                <Link to='/reviews'>
+                <div class="hexIn">
+                <div class="hexLink" href="#">
+                <div className='no1'></div>
+                <h1 id="demo1">Reviews</h1>
+                </div>
+                </div>
+                </Link>
+                </li>
+                <li class="hex">
+                <Link to='/categories'>
+                <div class="hexIn">
+                <div class="hexLink" href="#">
+                <div className='no2'></div>
+                <h1 id="demo1">Categories</h1>
+                </div>
+                </div>
+                </Link>
+                </li>
+                </ul>
+                 </div> */}
             </div>
             </div>
         </div>
