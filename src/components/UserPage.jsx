@@ -25,13 +25,17 @@ const UserPage = () => {
 
     return (
     <div className='userpage'>
-    <section className='userdetails'> 
+    <section className='userdetails'>
+    <div classname="user">
     <h2>Hello There! {user.username}</h2>
-    <img src={user.avatar_url} alt="user profile image"></img>
+    <img className="user-profile-img" src={user.avatar_url} alt="user profile image"></img>
+    </div>
+    </section>
+    <div className="user-page-add-review">
     <Link to="/reviews/add-review">
     <button>Add Review</button>
     </Link>
-    </section>
+    </div>
     <h3>Your Reviews</h3>
     <section className="cards-wrapper">
     {filteredReviews.map((review) => { 

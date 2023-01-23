@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import ReviewAdder from './components/ReviewAdder';
 import ReviewEditPage from "./components/ReviewEditPage";
 import CreateAccount from './components/CreateAccount';
+import Test from './components/Test';
 
 
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/reviews/add-review" element={<ReviewAdder />} />
         <Route path="/reviews/:review_id/edit-review" element={<ReviewEditPage />} />
         <Route path="/create-account" element={<CreateAccount />}/>
+        <Route path="/test-page" element={<Test />} />
       </Routes>
       <Footer />
     </div>
