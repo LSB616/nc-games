@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { getComments, getUser } from '../utils/api';
+import { getComments } from '../utils/api';
 import CommentAdder from './CommentAdder';
 import { UserContext } from '../contexts/User';
 import { deleteComment } from '../utils/api';
@@ -9,14 +9,14 @@ import Popup from 'react-popup';
 
 const Comments = ({ review_id }) => {
     const [comments, setComments] = useState([]);
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const [commentToDelete, setCommentToDelete] = useState('');
 
 useEffect(() => {
     getComments(review_id).then((commentsFromApi) => {
         setComments(commentsFromApi);
     });
-}, []);
+}, [review_id]);
 
 
 const handleSubmit = (e) => {
@@ -49,13 +49,13 @@ if (user.loggedIn) {
             return (
                 <div className='comment-row' key={comment.comment_id}>
                 <div className='comment-img-div'>
-                <img className='comment-img' src={require('../images/comment-image-1.png')} />
+                <img className='comment-img' src={require('../images/comment-image-1.png')} alt="comment-marker" />
                 </div>
                 <li className='comment-content'>
                 <h3>{comment.author} {comment.created_at.slice(0, 10)}</h3>
                 <h4>{comment.body}</h4>
                 <div className='comment-bottom'>
-                <h5>Likes: {comment.votes}</h5><button className="commentdelete-button" type="submit" value={commentToDelete} onClick={() => {setCommentToDelete(comment)}}>Delete</button>
+                <h5>Likes: {comment.votes}</h5><button className="commentdelete-button" id="delete" type="submit" value={commentToDelete} onClick={() => {setCommentToDelete(comment)}}>Delete</button>
                 </div>
                 </li>
                 </div>
@@ -64,14 +64,12 @@ if (user.loggedIn) {
                 return (
                     <div className='comment-row' key={comment.comment_id}>
                     <div className='comment-img-div'>
-                    <img className='comment-img' src={require('../images/comment-image-1.png')} />
+                    <img className='comment-img' src={require('../images/comment-image-1.png')} alt="comment-marker" />
                     </div>
                     <li className='comment-content'>
                     <h3>{comment.author} {comment.created_at.slice(0, 10)}</h3>
                     <h4 className='comment-body'>{comment.body}</h4>
-                    <div className='comment-bottom'>
                     <CommentVotes comment_id={comment.comment_id} votes={comment.votes}/>
-                    </div>
                     </li>
                     </div>
                 )
@@ -90,11 +88,14 @@ return (
     <ul className="comments_list">
     {comments.map((comment) => {
         return (
-            <div className='comment' key={comment.comment_id}>
-            <li>
-            <p>{comment.author} {comment.created_at.slice(0, 10)}</p>
-            <p>{comment.body}</p>
-            <p>Likes: {comment.votes}</p>    
+            <div className='comment-row' key={comment.comment_id}>
+            <div className='comment-img-div'>
+            <img className='comment-img' src={require('../images/comment-image-1.png')} alt="comment-marker"/>
+            </div>
+            <li className='comment-content'>
+            <h3>{comment.author} {comment.created_at.slice(0, 10)}</h3>
+            <h4 className='comment-body'>{comment.body}</h4>
+            <h5>Likes: {comment.votes}</h5> 
             </li>
             </div>
         )

@@ -16,7 +16,7 @@ export default function Votes({ votes, review_id }) {
     return (
         <section>
             <h3>Likes: {votes + votesChange}</h3>
-            <button onClick={incVote}>Like This Review</button>
+            <button id="like" className="like-review-button" onClick={incVote}>Like This Review</button>
         </section>
     )
 }

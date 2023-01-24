@@ -32,7 +32,7 @@ useEffect(() => {
     }).catch(() => {
         console.log('something went wrong in review');
     });
-}, [review_id]);
+}, [review_id, user.loggedIn, user.username]);
 
 
 const deleteContent = (e) => {
@@ -64,7 +64,7 @@ if (sameOwner) {
         <p>Designer: {review.designer}</p>  
         <p>Reviewer: {review.owner}</p>
         </div>
-        <button className="delete-review-button" value="" onClick={deleteContent}>Delete Review</button>
+        <button id="delete" className="delete-review-button" value="" onClick={deleteContent}>Delete Review</button>
         <Link to={`/reviews/${review_id}/edit-review`}>
         <button className="delete-review-button">Edit Review</button>
         </Link>
@@ -74,7 +74,7 @@ if (sameOwner) {
         </div>
         <div className="review-bottom">
         <p className="review_body">{review.review_body}</p>
-        <img src={`${review.review_img_url}`} className="review_img" alt="Image Associated with Board Game"></img>
+        <img src={`${review.review_img_url}`} className="review_img" alt="Board Game"></img>
         <div className="comments">
         <Comments review_id={review_id} />
         </div>
@@ -99,7 +99,7 @@ return (
     </div>
     <div className="review-bottom">
     <p className="review_body">{review.review_body}</p>
-    <img src={`${review.review_img_url}`} className="review_img" alt="Image Associated with Board Game"></img>
+    <img src={`${review.review_img_url}`} className="review_img" alt="Board Game"></img>
     <div className="comments">
     <Comments review_id={review_id} />
     </div>

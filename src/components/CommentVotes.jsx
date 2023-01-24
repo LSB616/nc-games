@@ -14,9 +14,8 @@ export default function Votes({ votes, comment_id }) {
     };
 
     return (
-        <section>
-            <h3>Likes: {votes + votesChange}</h3>
-            <button onClick={incVote}>👍</button>
-        </section>
+        <div className='comment-bottom'>
+            <h5>Likes: {votes + votesChange}</h5><button id="like" className="like-button" onClick={incVote}>Like</button>
+        </div>
     )
 }
