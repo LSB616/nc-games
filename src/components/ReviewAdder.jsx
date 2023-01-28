@@ -46,28 +46,53 @@ const ReviewAdder = () => {
 
     if (!submit) {
     return (
-        <form className='add-review-form' onSubmit={handleSubmit}>
-            <label htmlFor='review-title'>Title: </label>
-            <input type="text" id="review-title" value={title} onChange={(e) => {setTitle(e.target.value)}} required></input>
-            <label htmlFor='designer'>Game Designer: </label>
-            <input type="text" id="designer" value={gameDesigner} onChange={(e) => {setGameDesigner(e.target.value)}} required></input>
-            <label htmlFor='review-body'>Review: </label>
-            <textarea id="review-body" className="review-textarea" rows="40" cols="50" value={reviewBody} onChange={(e) => {setReviewBody(e.target.value)}} required></textarea>
-            <label htmlFor='category'>Category: </label>
-            <select className="category-dropdown" value={category} onChange={(e) => {setCategory(e.target.value)}} required>
-            <option disabled="disabled" selected={true} hidden={true}>Category</option>        
-            <option value="strategy">Strategy</option>
-            <option value="hidden-roles">Hidden Roles</option>
-            <option value="dexterity">Dexterity</option>
-            <option value="push-your-luck">Push Your Luck</option>
-            <option value="roll-and-write">Role and Write</option>
-            <option value="deck-building">Deck Building</option>
-            <option value="engine-building">Engine Building</option>
-            </select>
-            <label htmlFor='review-image-url'>Image: </label>
-            <input type="text" id="review-image-url" value={image} onChange={(e) => {setImage(e.target.value)}} required></input>
-            <button type="submit">Submit</button>
-        </form>
+        <section className='review-add-page'>
+        <img className='add-review-img' src={require('../images/AdobeStock_421558379.jpeg')} alt="" data-image-width="1920" data-image-height="911"></img>
+        <div class="review-add-div1">
+        <div class="review-add-div2">
+        <h2 class="review-add-h2">Submit Review</h2>
+        <p class="review-add-p1">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+        <div className='add-review-form-div'>
+        <form  className='add-review-form' onSubmit={handleSubmit}>
+            <div class="add-review-title">
+                <label htmlFor='review-title' className="add-review-title-label">Title</label>
+                <input type="text" id="review-title" placeholder="Enter Review Title" className="add-review-title-input" value={title} onChange={(e) => {setTitle(e.target.value)}} required></input>
+            </div>
+              <div class="add-review-designer">
+                <label htmlFor='designer' className="add-review-designer-label">Game Designer</label>
+                <input type="text" id="designer" placeholder="Enter Game Creator Name" className="add-review-designer-input" value={gameDesigner} onChange={(e) => {setGameDesigner(e.target.value)}} required></input>
+              </div>
+              <div class="add-review-category">
+                <label htmlFor='category' className="add-review-category-label">Category</label>
+                <select className="add-review-category-dropdown" id="touch" value={category} onChange={(e) => {setCategory(e.target.value)}} required>
+                <option disabled="disabled" selected={true} hidden={true}>Category</option>        
+                <option value="strategy">Strategy</option>
+                <option value="hidden-roles">Hidden Roles</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="push-your-luck">Push Your Luck</option>
+                <option value="roll-and-write">Role and Write</option>
+                <option value="deck-building">Deck Building</option>
+                <option value="engine-building">Engine Building</option>
+                </select>
+              </div>
+                <div className="add-review-img-url">
+                <label htmlFor='review-image-url' className="add-review-img-url-label">Image: </label>
+                <input type="text" id="review-image-url" placeholder="Enter Image URL" className="add-review-img-url-input" value={image} onChange={(e) => {setImage(e.target.value)}} required></input>    
+                </div>
+              <div class="add-review-body">
+                <label htmlFor='review-body' className="add-review-body-label">Review: </label>
+                <textarea id="review-body" className="add-review-body-input" placeholder="Enter Review" rows="4" cols="50" value={reviewBody} onChange={(e) => {setReviewBody(e.target.value)}} required></textarea>
+              </div>
+              <div class="add-review-button-div">
+                <button type="submit" className="add-review-page-button">Submit</button>
+              </div>
+            </form>
+
+        </div>
+
+        </div>
+        </div>
+        </section>
     );
     } else if (submit) {
         return (
@@ -80,5 +105,7 @@ const ReviewAdder = () => {
             </div>)
     };
 };
+
+
 
 export default ReviewAdder;
