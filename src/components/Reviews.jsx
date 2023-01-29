@@ -59,14 +59,14 @@ return (
     </Link>
 </section>
 <section >
-<div class="grid">
+<div className="grid">
 <ul id="hexGrid">
 {reviews.map((review) => { 
-    return  <li class="hex">
+    return  <li className="hex" key={review.review_id}>
             <Link to={`/reviews/${review.review_id}`}>
-            <div class="hexIn">
-            <div class="hexLink" href="#">
-            <div class='img' style={{'background-image': `url(${review.review_img_url})`}}></div>
+            <div className="hexIn">
+            <div className="hexLink" href="#">
+            <div className='img' style={{'backgroundImage': `url(${review.review_img_url})`}}></div>
             <h1 id="demo1">{review.title}</h1>
             <p id="demo2">{review.category}</p>
             <p id="demo3">{review.created_at.slice(0, 10)}</p>

@@ -869,6 +869,7 @@ padding-left: 5px;
 /* Add Review Page */
 
 .review-add-page {
+  height: 1400px;
   min-height: 1092px;
   color: black;
   background-color: #000000;
@@ -941,7 +942,7 @@ padding-left: 5px;
 
 .review-add-p1 {
   font-style: normal;
-  width: 450px;
+  width: 600px;
   margin: 17px auto 0;
   position: relative;
   word-wrap: break-word;
@@ -975,7 +976,6 @@ padding-left: 5px;
   margin-bottom: 20px;
   padding-left: 20px;
   margin-left: auto;
-  width: 33.33333333%;
   width: 100%;
   text-align: start;
   box-sizing: border-box;
@@ -1009,10 +1009,8 @@ padding-left: 5px;
 
 .add-review-designer {
   margin-bottom: 20px;
-  padding-left: 20px;
-  margin-left: auto;
-  width: 33.33333333%;
-  width: 100%;
+  margin-left: 20px;
+  width: 50%;
   text-align: start;
   box-sizing: border-box;
 }
@@ -1046,9 +1044,10 @@ padding-left: 5px;
 }
 
 .add-review-category {
-  width : 300px; 
-  margin : 40px auto; 
+  width : 44%; 
+  padding-bottom: 9px;
 }
+
 
 .add-review-category-label {
   font-weight: normal;
@@ -1057,9 +1056,74 @@ padding-left: 5px;
 }
 
 .add-review-category-dropdown {
-
+  padding: 1rem;
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: #ddd;
+	list-style: none;
+  width: 100%;
+	background: #ddd;
+	top: calc(100% + .5rem);
+	left: 0;
+	padding: 1rem;
+	margin: 0;
+	box-sizing: border-box;
+	border-radius: 5px;
+	max-height: 200px;
+	overflow-y: auto;
+  font-size: 1em;
 }
 
+.add-review-category-dropdown::-webkit-details-marker {
+	display: none;
+}
+
+.add-review-category[open] .add-review-category-dropdown::before {
+  content: '';
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	background: transparent;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.add-review-category-dropdown::after {
+	content: '';
+	display: inline-block;
+	width: .5rem;
+	height: .5rem;
+	border-bottom: 1px solid currentColor;
+	border-left: 1px solid currentColor;
+	border-bottom-left-radius: 2px;
+	transform: rotate(45deg) translate(50%, 0%);
+	transform-origin: center center;
+	transition: transform ease-in-out 100ms
+}
+
+.add-review-category-dropdown:focus {
+  outline: none;
+}
+
+.add-review-category[open] .add-review-category-dropdown:after {
+  transform: rotate(-45deg) translate(0%, 0%);
+}
+
+.option {
+	margin: 0;
+	padding: 1rem 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.option:first-child {
+	padding-top: 0;
+}
+
+.option:last-child {
+	padding-bottom: 0;
+	border-bottom: none;
+}
 
 .add-review-img-url, .add-review-body{
   margin-bottom: 20px;
@@ -1107,7 +1171,7 @@ padding-left: 5px;
 
 .add-review-page-button {
   color: #ffffff;
-  background-color: #3f96e8;
+  background-color: #000000;
   margin-left: auto;
   width: 100%;
   border-style: none;
@@ -1137,6 +1201,11 @@ padding-left: 5px;
   padding: 10px 30px;
   border-radius: 0;
   box-sizing: border-box;
+}
+
+.add-review-page-button:hover{
+  background-color: #d5d8dd;
+  color: #b08d57;
 }
 
 

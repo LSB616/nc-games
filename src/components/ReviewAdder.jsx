@@ -16,6 +16,7 @@ const ReviewAdder = () => {
     const [reviewId, setReviewId] = useState();
     const [submit, setSubmit] = useState();
 
+
     useEffect(() => {
         setIsLoading(false)
         setSubmit(false)
@@ -48,21 +49,21 @@ const ReviewAdder = () => {
     return (
         <section className='review-add-page'>
         <img className='add-review-img' src={require('../images/AdobeStock_421558379.jpeg')} alt="" data-image-width="1920" data-image-height="911"></img>
-        <div class="review-add-div1">
-        <div class="review-add-div2">
-        <h2 class="review-add-h2">Submit Review</h2>
-        <p class="review-add-p1">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+        <div className="review-add-div1">
+        <div className="review-add-div2">
+        <h2 className="review-add-h2">Submit Review</h2>
+        <p className="review-add-p1">Have some thoughts about a game you recently played? Share them with the Northern Board Gamers community below!</p>
         <div className='add-review-form-div'>
         <form  className='add-review-form' onSubmit={handleSubmit}>
-            <div class="add-review-title">
+            <div className="add-review-title">
                 <label htmlFor='review-title' className="add-review-title-label">Title</label>
                 <input type="text" id="review-title" placeholder="Enter Review Title" className="add-review-title-input" value={title} onChange={(e) => {setTitle(e.target.value)}} required></input>
             </div>
-              <div class="add-review-designer">
+              <div className="add-review-designer">
                 <label htmlFor='designer' className="add-review-designer-label">Game Designer</label>
                 <input type="text" id="designer" placeholder="Enter Game Creator Name" className="add-review-designer-input" value={gameDesigner} onChange={(e) => {setGameDesigner(e.target.value)}} required></input>
               </div>
-              <div class="add-review-category">
+              <div className="add-review-category">
                 <label htmlFor='category' className="add-review-category-label">Category</label>
                 <select className="add-review-category-dropdown" id="touch" value={category} onChange={(e) => {setCategory(e.target.value)}} required>
                 <option disabled="disabled" selected={true} hidden={true}>Category</option>        
@@ -79,17 +80,15 @@ const ReviewAdder = () => {
                 <label htmlFor='review-image-url' className="add-review-img-url-label">Image: </label>
                 <input type="text" id="review-image-url" placeholder="Enter Image URL" className="add-review-img-url-input" value={image} onChange={(e) => {setImage(e.target.value)}} required></input>    
                 </div>
-              <div class="add-review-body">
+              <div className="add-review-body">
                 <label htmlFor='review-body' className="add-review-body-label">Review: </label>
                 <textarea id="review-body" className="add-review-body-input" placeholder="Enter Review" rows="4" cols="50" value={reviewBody} onChange={(e) => {setReviewBody(e.target.value)}} required></textarea>
               </div>
-              <div class="add-review-button-div">
+              <div className="add-review-button-div">
                 <button type="submit" className="add-review-page-button">Submit</button>
               </div>
             </form>
-
         </div>
-
         </div>
         </div>
         </section>

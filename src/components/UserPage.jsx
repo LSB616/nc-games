@@ -26,7 +26,7 @@ const UserPage = () => {
     return (
     <div className='userpage'>
     <section className='userdetails'>
-    <div classname="user">
+    <div className="user">
     <h2>Hello There! {user.username}</h2>
     <img className="user-profile-img" src={user.avatar_url} alt="user profile image"></img>
     </div>
@@ -38,14 +38,14 @@ const UserPage = () => {
     </div>
     <h3>Your Reviews</h3>
     <section>
-    <div class="grid">
+    <div className="grid">
     <ul id="hexGrid">
     {filteredReviews.map((review) => { 
-    return  <li class="hex">
+    return  <li className="hex" key={review.review_id}>
     <Link to={`/reviews/${review.review_id}`}>
-    <div class="hexIn">
-    <div class="hexLink" href="#">
-    <div class='img' style={{'background-image': `url(${review.review_img_url})`}}></div>
+    <div className="hexIn">
+    <div className="hexLink" href="#">
+    <div className='img' style={{'backgroundImage': `url(${review.review_img_url})`}}></div>
     <h1 id="demo1">{review.title}</h1>
     <p id="demo2">{review.category}</p>
     <p id="demo3">{review.created_at.slice(0, 10)}</p>
