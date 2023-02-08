@@ -1,12 +1,10 @@
-import { UserContext } from '../contexts/User';
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { useParams, Link } from 'react-router-dom'
-import { getReview, deleteReview } from "../utils/api";
+import { getReview } from "../utils/api";
 import LoadingPage from "./LoadingPage";
 import { patchReviewForUpdate } from '../utils/api';
 
 const ReviewEditPage = () => {
-    const { user } = useContext(UserContext);
     const { review_id } = useParams();
     const [title, setTitle] = useState();
     const [gameDesigner, setGameDesigner] = useState();
@@ -26,7 +24,7 @@ const ReviewEditPage = () => {
             setCategory(res.review.category)
             setImage(res.review.review_img_url)
         })
-    }, []);
+    }, [review_id]);
 
 
 
@@ -47,15 +45,25 @@ const ReviewEditPage = () => {
 
     if (!submit) {
     return (
+    <section className='review-add-page'>
+    <img className='add-review-img' src={require('../images/AdobeStock_421558379.jpeg')} alt="" data-image-width="1920" data-image-height="911"></img>
+    <div className="review-add-div1">
+    <div className="review-add-div2">
+    <h2 className="review-add-h2">Edit Review</h2>
+    <p className="review-add-p1">Have something extra to say? Revised your view? Share them with the Northern Board Gamers community below!</p>
+    <div className='add-review-form-div'>
     <form className='add-review-form' onSubmit={handleSubmit}>
-    <label htmlFor='review-title'>Title: </label>
-    <input type="text" id="review-title" defaultValue={title} value={title} onChange={(e) => {setTitle(e.target.value)}} required></input>
-    <label htmlFor='designer'>Game Designer: </label>
-    <input type="text" id="designer" defaultValue={gameDesigner} value={gameDesigner} onChange={(e) => {setGameDesigner(e.target.value)}} required></input>
-    <label htmlFor='review-body'>Review: </label>
-    <textarea id="review-body" className="review-textarea" rows="40" cols="50" defaultValue={reviewBody} value={reviewBody} onChange={(e) => {setReviewBody(e.target.value)}} required></textarea>
-    <label htmlFor='category'>Category: </label>
-    <select className="category-dropdown" defaultValue={category} value={category} onChange={(e) => {setCategory(e.target.value)}} required>
+    <div className="add-review-title">
+    <label htmlFor='review-title' className="add-review-title-label">Title</label>
+    <input type="text" id="review-title"  className="add-review-title-input" defaultValue={title} value={title} onChange={(e) => {setTitle(e.target.value)}} required></input>
+    </div>
+    <div className="add-review-designer">
+    <label htmlFor='designer' className="add-review-designer-label">Game Designer</label>
+    <input type="text" id="designer" className="add-review-designer-input" defaultValue={gameDesigner} value={gameDesigner} onChange={(e) => {setGameDesigner(e.target.value)}} required></input>
+    </div>
+    <div className="add-review-category">
+    <label htmlFor='category' className="add-review-category-label">Category</label>
+    <select className="add-review-category-dropdown" id="touch" defaultValue={category} value={category} onChange={(e) => {setCategory(e.target.value)}} required>
     <option disabled="disabled" selected={true} hidden={true}>Category</option>        
     <option value="strategy">Strategy</option>
     <option value="hidden-roles">Hidden Roles</option>
@@ -65,20 +73,40 @@ const ReviewEditPage = () => {
     <option value="deck-building">Deck Building</option>
     <option value="engine-building">Engine Building</option>
     </select>
-    <label htmlFor='review-image-url'>Image: </label>
-    <input type="text" id="review-image-url" defaultValue={image} value={image} onChange={(e) => {setImage(e.target.value)}} required></input>
-    <button type="submit">Submit</button>
-</form>
+    </div>
+    <div className="add-review-img-url">
+    <label htmlFor='review-image-url' className="add-review-img-url-label">Image</label>
+    <input type="text" id="review-image-url" className="add-review-img-url-input" defaultValue={image} value={image} onChange={(e) => {setImage(e.target.value)}} required></input>
+    </div>
+    <div className="add-review-body">
+    <label htmlFor='review-body' className="add-review-body-label">Review</label>
+    <textarea  id="review-body" className="add-review-body-input" rows="4" cols="50" defaultValue={reviewBody} value={reviewBody} onChange={(e) => {setReviewBody(e.target.value)}} required></textarea>
+    </div>
+    <div className="add-review-button-div">
+    <button type="submit" className="add-review-page-button">Submit</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </section>
     )
     } else if (submit) {
         return (
-            <div className='review-update'>
-            <h2>Thank you for updating your review!</h2>
-            <p>Click below to go to your updated review.</p>
+            <section className='review-add-page'>
+            <img className='add-review-img' src={require('../images/AdobeStock_421558379.jpeg')} alt="" data-image-width="1920" data-image-height="911"></img>
+            <div className="review-add-div1">
+            <div className="review-add-div2">
+            <h2 className='submit-review-h2'>Thank you for updating your review!</h2>
+            <img className='submit-review-logo' src={require('../images/comment-image-1-no-back.png')} alt=""></img>
+            <p className='submit-review-p'>Click below to go to your review</p>
             <Link to={`/reviews/${review_id}`}>
-            <button>Click Here!</button>
+            <button className='add-review-page-button'>Click Here!</button>
             </Link>
-            </div>)
+            </div>
+            </div>
+            </section>
+        )
     }
 };
 

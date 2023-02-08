@@ -95,13 +95,19 @@ const ReviewAdder = () => {
     );
     } else if (submit) {
         return (
-            <div className='review-success'>
-            <h2>Thank you for submitting your review!</h2>
-            <p>Click below to go to your review</p>
+            <section className='review-add-page'>
+            <img className='add-review-img' src={require('../images/AdobeStock_421558379.jpeg')} alt="" data-image-width="1920" data-image-height="911"></img>
+            <div className="review-add-div1">
+            <div className="review-add-div2">
+            <h2 className='submit-review-h2'>Thank you for submitting your review!</h2>
+            <img className='submit-review-logo' src={require('../images/comment-image-1-no-back.png')} alt=""></img>
+            <p className='submit-review-p'>Click below to go to your review</p>
             <Link to={`/reviews/${reviewId}`}>
-            <button>Click Here!</button>
+            <button className='add-review-page-button'>Click Here!</button>
             </Link>
-            </div>)
+            </div>
+            </div>
+            </section>)
     };
 };
 

@@ -171,6 +171,15 @@ nav {
 
 /* Reviews CSS */
 
+.reviews-page {
+  width: 100%;
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
 .reviews-page h2 {
 font-size: 5em;
 padding: 20px;
@@ -375,7 +384,6 @@ transition: 0.8s;
 .hexIn:hover .hexLink {
   opacity: 1;
 }
-
 
 /* Reviews/review_id CSS */
 
@@ -1208,6 +1216,82 @@ padding-left: 5px;
   color: #b08d57;
 }
 
+.submit-review-h2 {
+  font-size: 3.75rem;
+  margin: 0 auto;
+  font-family: Oswald, sans-serif;
+  position: relative;
+  font-weight: 1000;
+  line-height: 1.1;
+  padding: 0;
+  color: #000;
+  word-wrap: break-word;
+  flex-shrink: 0;
+  display: table;
+  align-self: flex-end;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.submit-review-p {
+  font-style: normal;
+  font-size: 2rem;
+  width: 600px;
+  margin: 17px auto 0;
+  position: relative;
+  word-wrap: break-word;
+  flex-shrink: 0;
+  padding: 0;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+}
+
+.submit-review-logo {
+  padding: 0;
+  margin: auto;
+  margin-left: 220px;
+  height: 50%;
+  width: 50%;
+}
+
+.add-review-page-button-2 {
+  color: #ffffff;
+  background-color: #000000;
+  margin-left: auto;
+  width: 100%;
+  border-style: none;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 2px;
+  background-image: none;
+  text-transform: uppercase;
+  border-color: transparent;
+  stroke: none;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  position: relative;
+  border-width: 0;
+  display: inline-block;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  border: 0 none transparent;
+  outline-width: 0;
+  font-style: initial;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 30px;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.add-review-page-button-2:hover{
+  background-color: #d5d8dd;
+  color: #b08d57;
+}
 
 /* Media Queries */
 
