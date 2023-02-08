@@ -24,18 +24,41 @@ const LoginPage = () => {
 
         if (!user.loggedIn){
             return (
-                <div>
-                <h3>Sign In Here</h3>
-                <form className="login-page" onSubmit={handleSubmit}>
+                <section className="login-page">
+                <h1>Sign In Here</h1>
+                <div className="login-form-box">
+                <form className="login-form" onSubmit={handleSubmit}>
+                <div className='flex-input'>
                     <label htmlFor="ursername">Username:</label>
                     <input type="textarea" id="username" placeholder="Username" value={username} onChange={(e) => {setUsername(e.target.value)}} />
+                </div>
+                <div className='flex-input'>
+                    <label htmlFor="ursername">Password:</label>
+                    <input type="textarea" id="password" placeholder="Password" />
+                </div>
+                <div>
                     <button type="submit">Login</button>
+                </div>
+                <div className='extras-flex-container'>
+                    <div>
+                    <input type="checkbox" id="remember-me" />
+                    <span>Remember me</span>
+                    </div>
+                    <div>
+                    <Link>
+                    <p className="Link">Forgot Password?</p>
+                    </Link>
+                    </div>
+                </div>
                 </form>
-                <h3>Create Account</h3>
+                </div>
+                <div className='create-account'>
+                <h1>Create Account</h1>
                 <Link to="/create-account">
                 <button>Register</button>
                 </Link>
                 </div>
+                </section>
                 )
                 } else {
                 return (<UserPage />)

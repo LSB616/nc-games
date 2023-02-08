@@ -25,31 +25,38 @@ const UserPage = () => {
 
     return (
     <div className='userpage'>
-    <section className='userdetails'> 
+    <section className='userdetails'>
+    <div className="user">
     <h2>Hello There! {user.username}</h2>
-    <img src={user.avatar_url} alt="user profile image"></img>
+    <img className="user-profile-img" src={user.avatar_url} alt="user profile image"></img>
+    </div>
+    </section>
+    <div className="user-page-add-review">
     <Link to="/reviews/add-review">
     <button>Add Review</button>
     </Link>
-    </section>
+    </div>
     <h3>Your Reviews</h3>
-    <section className="cards-wrapper">
+    <section>
+    <div className="grid">
+    <ul id="hexGrid">
     {filteredReviews.map((review) => { 
-    return  <div className="card-grid-space" key={review.review_id}>
-        <Link to={`/reviews/${review.review_id}`} className="card-link">
-        <div className="card" style={{"--bg-img": `url(${review.review_img_url})`}}>
-        <div>
-        <h1>{review.title}</h1>
-        <p>{review.owner}</p>
-        <div className="date">{review.created_at.slice(0, 10)}</div>
-        <div className="tags">
-        <div className="tag">{review.category}</div>
-        </div>
-        </div>
-        </div>
-        </Link>
-        </div>
+    return  <li className="hex" key={review.review_id}>
+    <Link to={`/reviews/${review.review_id}`}>
+    <div className="hexIn">
+    <div className="hexLink" href="#">
+    <div className='img' style={{'backgroundImage': `url(${review.review_img_url})`}}></div>
+    <h1 id="demo1">{review.title}</h1>
+    <p id="demo2">{review.category}</p>
+    <p id="demo3">{review.created_at.slice(0, 10)}</p>
+    <p id="demo4">{review.owner}</p>
+    </div>
+    </div>
+    </Link>
+    </li>
         })}
+    </ul>
+    </div>
     </section>
     </div>
     );

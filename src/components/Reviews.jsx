@@ -34,12 +34,8 @@ const setSearch = (sort_by, order, category) => {
 
 
 return (
-<div>
-<section>
-    <Link to="/reviews/add-review">
-    <button>Add Review</button>
-    </Link>
-</section>
+<div className="reviews-page">
+<h2>Reviews</h2>
 <section>
     <select className="sortby-dropdown" value={sortbyQuery} onChange={(e) => {
         setSearch(e.target.value, null)
@@ -58,24 +54,30 @@ return (
     <option value="asc">Ascending</option>
     <option value="desc">Descending</option>
     </select>
+    <Link to="/reviews/add-review">
+    <button className="add-review-button" id="add-review">Add Review</button>
+    </Link>
 </section>
-<section className="cards-wrapper">
+<section >
+<div className="grid">
+<ul id="hexGrid">
 {reviews.map((review) => { 
-return  <div className="card-grid-space" key={review.review_id}>
-        <Link to={`/reviews/${review.review_id}`} className="card-link">
-        <div className="card" style={{"--bg-img": `url(${review.review_img_url})`}}>
-        <div>
-        <h1>{review.title}</h1>
-        <p>{review.owner}</p>
-        <div className="date">{review.created_at.slice(0, 10)}</div>
-        <div className="tags">
-        <div className="tag">{review.category}</div>
-        </div>
-        </div>
-        </div>
-        </Link>
-        </div>
+    return  <li className="hex" key={review.review_id}>
+            <Link to={`/reviews/${review.review_id}`}>
+            <div className="hexIn">
+            <div className="hexLink" href="#">
+            <div className='img' style={{'backgroundImage': `url(${review.review_img_url})`}}></div>
+            <h1 id="demo1">{review.title}</h1>
+            <p id="demo2">{review.category}</p>
+            <p id="demo3">{review.created_at.slice(0, 10)}</p>
+            <p id="demo4">{review.owner}</p>
+            </div>
+            </div>
+            </Link>
+            </li>
 })}
+</ul>
+</div>
 </section>
 </div>
 );

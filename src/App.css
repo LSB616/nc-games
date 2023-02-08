@@ -70,11 +70,32 @@
 
 .no1 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0,0,0,0.8)), url(./images/alt-reviews-link-flipped.png);
+  /* position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-size: cover;
+  filter: brightness(80%);
+  overflow: hidden;
+-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); */
 }
 
 .no2 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0,0,0,0.8)), url(./images/alt-cat-link.png);
-  color: black;
+  /* position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-size: cover;
+  filter: brightness(80%);
+  overflow: hidden;
+-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); */
 }
 
 .homepage-card:hover {
@@ -98,6 +119,12 @@ h4 {
   padding-right: 8%;
   box-sizing: border-box;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  color: #ffffff;
+  font-size: 19px;
 }
 
 .logo {
@@ -144,167 +171,225 @@ nav {
 
 /* Reviews CSS */
 
-body {
-  margin: 0;
+.reviews-page {
+  width: 100%;
   min-height: 100vh;
-  font-family: 'Open Sans';
-  background: #fafafa;
-}
-
-a {
-  color: inherit;
-}
-
-:root {
-  --color: #b08d57;
-  --transition-time: 0.5s;
-}
-
-.cards-wrapper {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 4rem;
-  padding: 4rem;
-  margin: 0 auto;
-  width: max-content;
-}
-
-.card {
-  font-family: 'Heebo';
-  --bg-filter-opacity: 0.5;
-  background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
-  height: 20em;
-  width: 15em;
-  font-size: 1.5em;
-  color: rgb(255, 255, 255);
-  border-radius: 1em;
-  padding: 1em;
-  /* margin: 2em; if they need to be spaced out more */
-  display: flex;
-  align-items: flex-end;
-  background-size: cover;
   background-position: center;
-  box-shadow: 0 0 5em -1em black;
-  transition: all, var(--transition-time);
-  position: relative;
-  overflow: hidden;
-  border: 10px solid #ccc;
-  text-decoration: none;
+  background-size: cover;
+  padding-left: 8%;
+  padding-right: 8%;
 }
 
-.card:hover {
-  transform: rotate(0);
+.reviews-page h2 {
+font-size: 5em;
+padding: 20px;
 }
 
-.card h1 {
-  margin: 0;
-  font-size: 1.5em;
-  line-height: 1.2em;
+.sortby-dropdown, .orderby-dropdown {
+  margin: 5px;
+  border: none;
+	height: 20px;
+  border-radius: 5px;
+	width: 100px;
+  min-width: 100px;
+	font-size: 14px;
+	cursor: pointer;
 }
 
-.card p {
-  font-size: 0.75em;
-  font-family: 'Open Sans';
-  margin-top: 0.5em;
-  line-height: 2em;
+.add-review-button {
+  margin: 4px;
+  border: none;
+	height: 20px;
+  border-radius: 5px;
+	width: 100px;
+  min-width: 100px;
+	font-size: 14px;
+	cursor: pointer;
 }
 
-.card .tags {
+.add-review-button:hover{	
+  filter: hue-rotate(40deg);
+	transform: scale(1.1);}
+
+.add-review-button:focus {
+  	outline: none;
+	color: rgb(0, 0, 0);
+	background-color: #b08d57!important;
+	background-image: linear-gradient(315deg, #b08d57 0%, #ffffff 74%)!important;
+}
+
+.add-review-button:focus:hover {
+  	filter: hue-rotate(0deg);
+}
+
+#hexGrid {
   display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: sans-serif;
+  list-style-type: none;
+  padding-top: 20px;
 }
 
-.card .tags .tag {
-  font-size: 0.75em;
-  background: rgba(255,255,255,0.5);
-  border-radius: 0.3rem;
-  padding: 0 0.5em;
-  margin-right: 0.5em;
-  line-height: 1.5em;
-  transition: all, var(--transition-time);
+.hex {
+  position: relative;
+  visibility:hidden;
+  outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+  transition: all 0.5s;
+  backface-visibility: hidden;
+  will-change: transform;
+  transition: all 0.5s;
+}
+.hex::after{
+  content:'';
+  display:block;
+  padding-bottom: 86.602%;  /* =  100 / tan(60) * 1.5 */
+}
+.hexIn{
+  position: absolute;
+  width:96%;
+  padding-bottom: 110.851%; /* =  width / sin(60) */
+  margin: 2%;
+  overflow: hidden;
+  visibility: hidden;
+  outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+  -webkit-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+      -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+          transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+    transition: all 0.5s;
+}
+.hexIn * {
+  position: absolute;
+  visibility: visible;
+  outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+}
+.hexLink {
+    display:block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+        -ms-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+            transform: skewY(-30deg) rotate3d(0,0,1,60deg);
 }
 
-.card:hover .tags .tag {
-  background: var(--color);
-  color: rgb(255, 255, 255);
+
+
+
+/*** HEX CONTENT **********************************************************************/
+.hex img {
+  left: -100%;
+  right: -100%;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
 }
 
-.card .date {
+.hex h1, .hex p {
+  width: 100%;
+  padding: 5%;
+  box-sizing:border-box;
+  font-weight: 300;
+  opacity: 0;
+}
+
+#demo1 {
+  color: #F5CE95;
+  text-transform: capitalize;
+    text-align: center;
+  bottom: 50%;
+  padding-top:50%;
+  font-size: 1.5em;
+  z-index: 1;
+}
+.hex h1:before, .hex h1:after {
+  display: inline-block;
+  margin: 0 0.5em;
+  width: 0.25em;
+  height: 0.03em;
+  background: #ffffff;
+  content: '';
+  vertical-align: middle;
+  transition: all 0.3s;
+  text-align:center;
+}
+
+#demo2 {
+top: 50%;
+text-align: center;
+text-transform: uppercase;
+    
+}
+
+#demo3 {
+  top: 60%;
+  text-align: center;
+  text-transform: uppercase;  
+}
+
+#demo4 {
+    top: 70%;
+    text-align: center;
+    text-transform: uppercase;  
+}
+
+.img {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 0.75em;
-  padding: 1em;
-  line-height: 1em;
-  opacity: .8;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-size: cover;
+  filter: brightness(80%);
+  overflow: hidden;
+-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
-.card:before, .card:after {
-  content: '';
-  transform: scale(0);
-  transform-origin: top left;
-  border-radius: 50%;
+.img:before, .img:after {
   position: absolute;
-  left: -50%;
-  top: -50%;
-  z-index: -5;
-  transition: all, var(--transition-time);
-  transition-timing-function: ease-in-out;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.img:before {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0,0,0,0.9));
+}
+.img:after {
+  background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.5), transparent);
 }
 
-.card:before {
-  background: #ddd;
-  width: 250%;
-  height: 250%;
+/*** HOVER EFFECT  **********************************************************************/
+
+
+
+.hexLink:hover h1, .hexLink:focus h1,
+.hexLink:hover p, .hexLink:focus p{
+opacity:1;
+transition: 0.8s;
 }
 
-.card:after {
-  background: rgb(0, 0, 0);
-  width: 200%;
-  height: 200%;
-}
 
-.card:hover {
-  color: var(--color);
-}
-
-.card:hover:before, .card:hover:after {
-  transform: scale(1);
-}
-
-.card-grid-space .num {
-  font-size: 3em;
-  margin-bottom: 1.2rem;
-  margin-left: 1rem;
-}
-
-.card-link {
-  text-decoration: none;
-}
-
-.info {
-  font-size: 1.2em;
-  display: flex;
-  padding: 1em 3em;
-  height: 3em;
-}
-
-.info img {
-  height: 3em;
-  margin-right: 0.5em;
-}
-
-.info h1 {
-  font-size: 1em;
-  font-weight: normal;
+.hexIn:hover .img:before,
+.hexIn:hover .img:after,
+.hexIn:hover .hexLink {
+  opacity: 1;
 }
 
 /* Reviews/review_id CSS */
 
 .review{
   width: 100%;
-  height:max-content;
+  min-height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7));
   background-position: center;
   background-size: cover;
@@ -332,6 +417,7 @@ box-sizing: border-box;
   grid-column: span 2;
   grid-row: span 2;
   border-radius: 20%;
+  filter:brightness(80%)
 }
 
 .review_title {
@@ -340,6 +426,7 @@ box-sizing: border-box;
 
 .review_p {
   padding-left: 10%;
+  padding-right: 10%;
 }
 
 .review_votes {
@@ -353,7 +440,7 @@ box-sizing: border-box;
 
 .comments-section h2 {
   font-size: 3em;
-  padding-bottom: 0.7em;
+  padding-bottom: 0.3em;
 }
 
 .comments {
@@ -362,9 +449,11 @@ box-sizing: border-box;
 }
 
 .commentAdder {
+padding-top: 0.7em;
 display: flex;
 align-items: center;
 box-sizing: border-box;
+justify-content: center;
 }
 
 .commentAdder label {
@@ -395,14 +484,12 @@ box-sizing: border-box;
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 
-.commentAdder-button:hover, .commentdelete-button:hover {
+.commentAdder-button:hover {
   box-shadow: 0 0 40px 40px rgba(176, 141, 87) inset;
 }
 
 .commentAdder-button:hover,
-.commentAdder-button:focus,
-.commentdelete-button:hover,
-.commentdelete-button:focus {
+.commentAdder-button:focus{
   color: rgb(255, 255, 255);
   outline: 0;
 }
@@ -434,11 +521,111 @@ box-sizing: border-box;
   outline-width: 0;
 }
 
+.comments-list-container{
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-row {
+width: 60%;
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-left: 400px;
+}
+
+.comment-row li {
+  list-style-type: none; 
+}
+
+.comment-content {
+  padding:5%;
+  padding: 3%;
+}
+
+.comment-row h3 {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.comment-row h4 {
+  font-size: 18px;
+  padding: 0;
+  font-weight: normal;
+}
+
+.comment-row h5 {
+  font-size: 0.9em;
+  color: grey;
+}
+
+.comment-bottom {
+  display: flex;
+}
+
+.comment-bottom button {
+  margin-left: 75%;
+}
+
+.comment-img-div{
+  width: 4em;
+}
+
+.comment-img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.like-button, .commentdelete-button{
+	border: none;
+	height: 30px;
+  border-radius: 5px;
+	width: 100px;
+  min-width: 100px;
+	margin: 5px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.like-review-button, .delete-review-button  {
+  border: none;
+	height: 30px;
+  border-radius: 5px;
+	width: 120px;
+  min-width: 120px;
+	margin: 5px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#like, #delete, #addreview {
+		background-color: #637081;
+		background-image: linear-gradient(315deg, #d5d8dd 0%, #d6dadd 74%);
+		color: rgb(0, 0, 0);
+}
+
+.like-button:hover, .commentdelete-button:hover, .delete-review-button:hover, .like-review-button:hover {
+	filter: hue-rotate(40deg);
+	transform: scale(1.1);
+}
+
+.like-button:focus, .commentdelete-button:focus, .delete-review-button:focus, .like-review-button:focus {
+	outline: none;
+	color: rgb(0, 0, 0);
+	background-color: #b08d57!important;
+	background-image: linear-gradient(315deg, #b08d57 0%, #ffffff 74%)!important;
+}
+
+.like-button:focus:hover, .commentdelete-button:focus:hover, .delete-review-button:focus:hover, .like-review-button:focus:hover {
+	filter: hue-rotate(0deg);
+}
 
 /* Footer CSS */
 
 .footer {
-  padding-top: 100px;
+  min-height: 5vh;
   background-color: #000;
 }
 
@@ -446,6 +633,9 @@ box-sizing: border-box;
 
 .loading-page {
   background-color: #000;
+  width: 100%;
+  height: 80vh;
+  min-height: 100vh;
 }
 
 .loading-h2 {
@@ -469,42 +659,648 @@ box-sizing: border-box;
   }
 }
 
+
+/* Login page CSS */
+
+.login-page {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0,0,0,0.9)), url(./images/AdobeStock_421558379.jpeg);
+  background-position: center;
+  background-size: cover;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.login-page h1 {
+  font-size: 100px;
+  padding-top: 30px;
+  margin-bottom: -50px;
+}
+
+.login-form-box {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  align-items: center;
+}
+
+.login-form {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  width: 400px;
+}
+
+.login-page input {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.flex-input {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.login-page label {
+  flex-basis: 130px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.login-page button {
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #b08d57;
+  border: none;
+  margin: 10px 0;
+  color: #000;
+}
+
+.login-page button:hover {
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+}
+
+.extras-flex-container {
+  display: flex;
+}
+
+.extras-flex-container div {
+  flex: 1;
+}
+
+.extras-flex-container a {
+  text-decoration: none;
+}
+
+.extras-flex-container a:hover {
+  color:#000000;
+}
+
+.extras-flex-container span{
+padding-left: 5px;
+}
+
+.create-account h1 {
+  font-size: 100px;
+  padding-top: 0px;
+  margin-bottom: 20px;
+}
+
+.create-account button {
+  width: 50%;
+}
+
+.create-account button:hover {
+  cursor: pointer;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+/* Login page for Comments CSS */
+
+.login-page-for-comments {
+  width: 100%;
+  background-size: cover;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.login-page-for-comments h2 {
+  font-size: 18px;
+  color: #000;
+}
+
+.login-page-for-comments input {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.flex-input {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.login-page-for-comments label {
+  flex-basis: 130px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.login-page-for-comments button {
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #b08d57;
+  border: none;
+  margin: 10px 0;
+  color: #000;
+}
+
+.login-page-for-comments button:hover {
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+}
+
+.login-page-for-comments a {
+  color: #000;
+}
+
+.login-page-for-comments a:hover {
+  color: #b08d57
+}
+
+/* UserPage CSS */
+
+.userpage {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  height: max-content;
+  padding-left: 8%;
+  padding-right: 8%;
+  flex-direction: column;
+}
+
+.user-profile-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+}
+
+.userdetails {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  width: 100%;
+  align-items: center;
+}
+
+.userdetails h2 {
+  font-size: 80px;
+  padding-bottom: 20px;
+}
+
+.user-page-add-review {
+  margin-top: 30px;
+}
+
+.user-page-add-review button {
+  width: 30%;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #b08d57;
+  border: none;
+  margin: 10px 0;
+  color: #000;
+  border-radius: 25px;
+}
+
+.user-page-add-review button:hover {
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+}
+
+.userpage h3 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+/* Add Review Page */
+
+.review-add-page {
+  height: 1400px;
+  min-height: 1092px;
+  color: black;
+  background-color: #000000;
+  text-align: center;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+}
+
+.add-review-img {
+  height: 575px;
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  color: black;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  position: relative;
+  border-style: none;
+  box-sizing: border-box;
+  filter: brightness(50%);
+}
+
+.review-add-div1{
+  width: 946px;
+  min-height: 559px;
+  background-image: none;
+  margin: -83px auto 46px;
+  color: #111111;
+  background-color: rgba(176, 141, 87);
+  text-align: center;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.review-add-div2 {
+  padding: 50px 30px 30px;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1;
+  max-width: 100%;
+  transition-duration: inherit;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.review-add-h2 {
+  font-size: 3.75rem;
+  margin: 0 auto;
+  font-family: Oswald, sans-serif;
+  position: relative;
+  font-weight: 400;
+  line-height: 1.1;
+  padding: 0;
+  color: #000;
+  word-wrap: break-word;
+  flex-shrink: 0;
+  display: table;
+  align-self: flex-end;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.review-add-p1 {
+  font-style: normal;
+  width: 600px;
+  margin: 17px auto 0;
+  position: relative;
+  word-wrap: break-word;
+  flex-shrink: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.add-review-form-div {
+  width: 866px;
+  margin: 40px auto 0;
+  position: relative;
+  flex-shrink: 0;
+  font-size: 1rem;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.add-review-form {
+  padding: 0;
+  margin-left: -20px;
+  width: calc(100% + 20px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  box-sizing: border-box;
+  gap: 2rem;
+}
+
+.add-review-title {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  margin-left: auto;
+  width: 100%;
+  text-align: start;
+  box-sizing: border-box;
+}
+
+.add-review-title-label {
+  font-weight: normal;
+  display: none;
+  box-sizing: border-box;
+  color: #111111;
+}
+
+.add-review-title-input {
+  background-color: #e5e5e5;
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  background-image: none;
+  background-clip: padding-box;
+  border: none;
+  border-radius: 3px;
+  color: inherit;
+  height: auto;
+  overflow: visible;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.add-review-designer {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  width: 50%;
+  text-align: start;
+  box-sizing: border-box;
+}
+
+.add-review-designer-label {
+    display: none;
+    box-sizing: border-box;
+    text-align: start;
+    font-size: 1rem;
+    color: #111111;
+}
+
+.add-review-designer-input {
+  color: #111111;
+  background-color: #e5e5e5;
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  background-image: none;
+  background-clip: padding-box;
+  border: none;
+  border-radius: 3px;
+  color: inherit;
+  height: auto;
+  overflow: visible;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.add-review-category {
+  width : 44%; 
+  padding-bottom: 9px;
+}
+
+
+.add-review-category-label {
+  font-weight: normal;
+  display: none;
+  box-sizing: border-box;
+}
+
+.add-review-category-dropdown {
+  padding: 1rem;
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: #ddd;
+	list-style: none;
+  width: 100%;
+	background: #ddd;
+	top: calc(100% + .5rem);
+	left: 0;
+	padding: 1rem;
+	margin: 0;
+	box-sizing: border-box;
+	border-radius: 5px;
+	max-height: 200px;
+	overflow-y: auto;
+  font-size: 1em;
+}
+
+.add-review-category-dropdown::-webkit-details-marker {
+	display: none;
+}
+
+.add-review-category[open] .add-review-category-dropdown::before {
+  content: '';
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	background: transparent;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.add-review-category-dropdown::after {
+	content: '';
+	display: inline-block;
+	width: .5rem;
+	height: .5rem;
+	border-bottom: 1px solid currentColor;
+	border-left: 1px solid currentColor;
+	border-bottom-left-radius: 2px;
+	transform: rotate(45deg) translate(50%, 0%);
+	transform-origin: center center;
+	transition: transform ease-in-out 100ms
+}
+
+.add-review-category-dropdown:focus {
+  outline: none;
+}
+
+.add-review-category[open] .add-review-category-dropdown:after {
+  transform: rotate(-45deg) translate(0%, 0%);
+}
+
+.option {
+	margin: 0;
+	padding: 1rem 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.option:first-child {
+	padding-top: 0;
+}
+
+.option:last-child {
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.add-review-img-url, .add-review-body{
+  margin-bottom: 20px;
+  padding-left: 20px;
+  margin-left: auto;
+  width: 100%;
+  text-align: start;
+  box-sizing: border-box;
+}
+
+.add-review-img-url-label,  .add-review-body-label {
+    font-weight: normal;
+    display: none;
+    box-sizing: border-box;
+}
+
+.add-review-img-url-input,  .add-review-body-input {
+  color: #111111;
+  background-color: #e5e5e5;
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  background-image: none;
+  background-clip: padding-box;
+  border: none;
+  border-radius: 3px;
+  color: inherit;
+  height: auto;
+  overflow: auto;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  box-sizing: border-box;
+} 
+
+.add-review-button-div {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  margin-left: auto;
+  width: 100%;
+  text-align: start;
+  box-sizing: border-box;
+}
+
+.add-review-page-button {
+  color: #ffffff;
+  background-color: #000000;
+  margin-left: auto;
+  width: 100%;
+  border-style: none;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 2px;
+  background-image: none;
+  text-transform: uppercase;
+  border-color: transparent;
+  stroke: none;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  position: relative;
+  border-width: 0;
+  display: inline-block;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  border: 0 none transparent;
+  outline-width: 0;
+  font-style: initial;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 30px;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.add-review-page-button:hover{
+  background-color: #d5d8dd;
+  color: #b08d57;
+}
+
+.submit-review-h2 {
+  font-size: 3.75rem;
+  margin: 0 auto;
+  font-family: Oswald, sans-serif;
+  position: relative;
+  font-weight: 1000;
+  line-height: 1.1;
+  padding: 0;
+  color: #000;
+  word-wrap: break-word;
+  flex-shrink: 0;
+  display: table;
+  align-self: flex-end;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.submit-review-p {
+  font-style: normal;
+  font-size: 2rem;
+  width: 600px;
+  margin: 17px auto 0;
+  position: relative;
+  word-wrap: break-word;
+  flex-shrink: 0;
+  padding: 0;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+}
+
+.submit-review-logo {
+  padding: 0;
+  margin: auto;
+  margin-left: 220px;
+  height: 50%;
+  width: 50%;
+}
+
+.add-review-page-button-2 {
+  color: #ffffff;
+  background-color: #000000;
+  margin-left: auto;
+  width: 100%;
+  border-style: none;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 2px;
+  background-image: none;
+  text-transform: uppercase;
+  border-color: transparent;
+  stroke: none;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  position: relative;
+  border-width: 0;
+  display: inline-block;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  border: 0 none transparent;
+  outline-width: 0;
+  font-style: initial;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 30px;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.add-review-page-button-2:hover{
+  background-color: #d5d8dd;
+  color: #b08d57;
+}
+
 /* Media Queries */
-@media screen and (max-width: 1285px) {
-  .cards-wrapper {
-    grid-template-columns: 1fr 1fr;
-  }
-}
 
-@media screen and (max-width: 900px) {
-  .cards-wrapper {
-    grid-template-columns: 1fr;
+@media all and (max-width: 480px) {
+  .flex-input {
+    flex-direction: column;
   }
-  .info {
-    justify-content: center;
-  }
-  .card-grid-space .num {
-    margin-left: 0;
-    text-align: center;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .cards-wrapper {
-    padding: 4rem 2rem;
-  }
-  .card {
-    max-width: calc(100vw - 4rem);
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .info {
-    display: block;
-    text-align: center;
-  }
-  .info h1 {
-    margin: 0;
+  label, h1 {
+    flex-basis: 0;
   }
 }
 
@@ -513,3 +1309,61 @@ box-sizing: border-box;
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+/*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
+@media (min-width:1201px) { /* <- 5-4  hexagons per row */
+  #hexGrid{
+    padding-bottom: 4.4%
+  }
+  .hex {
+    width: 20%; /* = 100 / 5 */
+  }
+  .hex:nth-child(9n+6){ /* first hexagon of even rows */
+    margin-left:10%;  /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 1200px) and (min-width:901px) { /* <- 4-3  hexagons per row */
+  #hexGrid{
+    padding-bottom: 5.5%;
+    font-size: 13px;
+  }
+  .hex {
+    width: 25%; /* = 100 / 4 */
+  }
+  .hex:nth-child(7n+5){ /* first hexagon of even rows */
+    margin-left:12.5%;  /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 900px) and (min-width:601px) { /* <- 3-2  hexagons per row */
+  #hexGrid{
+    padding-bottom: 7.4%;
+    font-size: 14px;
+  }
+  .hex {
+    width: 33.333%; /* = 100 / 3 */
+  }
+  .hex:nth-child(5n+4){ /* first hexagon of even rows */
+    margin-left:16.666%;  /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 600px) { /* <- 2-1  hexagons per row */
+  #hexGrid{
+    padding-bottom: 11.2%;
+    font-size: 12px;
+  }
+  .hex {
+    width: 50%; /* = 100 / 3 */
+  }
+  .hex:nth-child(3n+3){ /* first hexagon of even rows */
+    margin-left:25%;  /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 400px) {
+    #hexGrid {
+        font-size: 8px;
+    }
+  }
