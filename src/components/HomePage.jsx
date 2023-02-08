@@ -10,45 +10,32 @@ export function HomePage () {
             <p className="blurb">Thanks for dropping in! Northen Board Gamers is the place to find honest to the point reviews on all the most recent and classic Board Games, Card games, and Tabletop Games. The reviews are informative and the community is welcoming. So, if you like what you see, create an account and get involved! Or feel free to take a little look around ...</p>
             </div>
             <div className="col">
-                <Link to='/reviews'>
-                <div className="homepage-card no1">
-                    <h4>Reviews</h4>
-                </div>
-                </Link>
-                <Link to='/categories'>
-                <div className="homepage-card no2">
-                    <h4>Categories</h4>
-                </div>
-                </Link>
-                {/* <div class="grid">
-                <ul id="hexGrid">
-                <li class="hex">
-                <Link to='/reviews'>
-                <div class="hexIn">
-                <div class="hexLink" href="#">
-                <div className='no1'></div>
-                <h1 id="demo1">Reviews</h1>
-                </div>
-                </div>
-                </Link>
-                </li>
-                <li class="hex">
-                <Link to='/categories'>
-                <div class="hexIn">
-                <div class="hexLink" href="#">
-                <div className='no2'></div>
-                <h1 id="demo1">Categories</h1>
-                </div>
-                </div>
-                </Link>
-                </li>
-                </ul>
-                 </div> */}
+            <div className="grid">
+            <ul id="hexGrid">
+            <li className="hex-home">
+            <Link to='/reviews'>
+            <div className="hexIn">
+            <div className="hexLink">
+            <div className='img-2' style={{'backgroundImage': `url(https://i.pinimg.com/564x/a2/93/17/a29317052b668a8f2d0d42634e47b2f1.jpg)`}}></div>
+            <h2 id="demo6">Reviews</h2>
+            </div>
+            </div>
+            </Link>
+            </li>
+            <li className="hex-home">
+            <Link to='/categories'>
+            <div className="hexIn">
+            <div className="hexLink">
+            <div className='img-2' style={{'backgroundImage': `url(https://i.pinimg.com/564x/53/f8/77/53f8778dbcca2d980f5cd37e586e2689.jpg)`}}></div>
+            <h2 id="demo6">Categories</h2>
+            </div>
+            </div>
+            </Link>
+            </li>
+            </ul>
+            </div>
             </div>
             </div>
         </div>
     );
 };
-
-{/* <a href="https://boardgame-reviews.onrender.com/api/reviews">Reviews</a>
-<a href="https://boardgame-reviews.onrender.com/api/categories">Categories</a> */}
