@@ -53,6 +53,64 @@
   flex-basis: 50%;
 }
 
+.hex-home {
+  position: relative;
+  visibility:hidden;
+  outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+  transition: all 0.5s;
+  backface-visibility: hidden;
+  will-change: transform;
+  transition: all 0.5s;
+  padding-bottom: 80px;
+}
+.hex-home::after{
+  content:'';
+  display:block;
+  padding-bottom: 86.602%;  /* =  100 / tan(60) * 1.5 */
+}
+
+/*** HEX CONTENT **********************************************************************/
+.hex-home img {
+  left: -100%;
+  right: -100%;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.hex-home h2, .hex-home p {
+  width: 100%;
+  padding: 5%;
+  box-sizing:border-box;
+  font-weight: 300;
+}
+
+#demo6 {
+  color: #ffffff;
+  text-transform: capitalize;
+  text-align: center;
+  bottom: 50%;
+  padding-top:50%;
+  font-size: 4rem;
+  z-index: 1;
+  font-weight: bold;
+}
+
+.img-2{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  filter: brightness(30%);
+}
+
+
 .homepage-card {
   width: 400px;
   height: 460px;
@@ -300,7 +358,7 @@ padding: 20px;
 #demo1 {
   color: #F5CE95;
   text-transform: capitalize;
-    text-align: center;
+  text-align: center;
   bottom: 50%;
   padding-top:50%;
   font-size: 1.5em;
@@ -1293,6 +1351,98 @@ padding-left: 5px;
   color: #b08d57;
 }
 
+/* Category Page */
+
+.hex-cat {
+  position: relative;
+  visibility:hidden;
+  outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+  transition: all 0.5s;
+  backface-visibility: hidden;
+  will-change: transform;
+  transition: all 0.5s;
+}
+.hex-cat::after{
+  content:'';
+  display:block;
+  padding-bottom: 86.602%;  /* =  100 / tan(60) * 1.5 */
+}
+
+/*** HEX CONTENT **********************************************************************/
+.hex-cat img {
+  left: -100%;
+  right: -100%;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.hex-cat h2, .hex-cat p {
+  width: 100%;
+  padding: 5%;
+  box-sizing:border-box;
+  font-weight: 300;
+}
+
+#demo5 {
+  color: #ffffff;
+  text-transform: capitalize;
+  text-align: center;
+  bottom: 50%;
+  padding-top:50%;
+  font-size: 3rem;
+  z-index: 1;
+  font-weight: bold;
+}
+
+.hex h2 {
+  display: inline-block;
+  margin: 0 0.5em;
+  width: 0.25em;
+  height: 0.03em;
+  background: #ffffff;
+  content: '';
+  vertical-align: middle;
+  transition: all 0.3s;
+  text-align:center;
+}
+
+.img-2{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  filter: brightness(30%);
+}
+
+.img-2:before, .img-2:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.img-2:before {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0,0,0,0.9));
+}
+.img-2:after {
+  background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.hexIn:hover .img-2:before,
+.hexIn:hover .img-2:after{
+  opacity: 1;
+}
+
 /* Media Queries */
 
 @media all and (max-width: 480px) {
@@ -1315,10 +1465,15 @@ padding-left: 5px;
   #hexGrid{
     padding-bottom: 4.4%
   }
-  .hex {
+  .hex, .hex-cat  {
     width: 20%; /* = 100 / 5 */
   }
-  .hex:nth-child(9n+6){ /* first hexagon of even rows */
+
+  .hex-home  {
+    width: 50%; /* = 100 / 5 */
+  }
+
+  .hex:nth-child(9n+6), .hex-home:nth-child(9n+6), .hex-cat:nth-child(9n+6){ /* first hexagon of even rows */
     margin-left:10%;  /* = width of .hex / 2  to indent even rows */
   }
 }
@@ -1328,10 +1483,15 @@ padding-left: 5px;
     padding-bottom: 5.5%;
     font-size: 13px;
   }
-  .hex {
+  .hex, .hex-cat {
     width: 25%; /* = 100 / 4 */
   }
-  .hex:nth-child(7n+5){ /* first hexagon of even rows */
+
+  .hex-home  {
+    width: 55%; /* = 100 / 5 */
+  }
+
+  .hex:nth-child(7n+5), .hex-home:nth-child(7n+5), .hex-cat:nth-child(7n+5){ /* first hexagon of even rows */
     margin-left:12.5%;  /* = width of .hex / 2  to indent even rows */
   }
 }
@@ -1341,10 +1501,15 @@ padding-left: 5px;
     padding-bottom: 7.4%;
     font-size: 14px;
   }
-  .hex {
+  .hex, .hex-cat {
     width: 33.333%; /* = 100 / 3 */
   }
-  .hex:nth-child(5n+4){ /* first hexagon of even rows */
+
+  .hex-home {
+    width: 63%; /* = 100 / 3 */
+  }
+
+  .hex:nth-child(5n+4), .hex-home:nth-child(5n+4), .hex-cat:nth-child(5n+4){ /* first hexagon of even rows */
     margin-left:16.666%;  /* = width of .hex / 2  to indent even rows */
   }
 }
@@ -1354,10 +1519,16 @@ padding-left: 5px;
     padding-bottom: 11.2%;
     font-size: 12px;
   }
-  .hex {
+  .hex, .hex-cat {
     width: 50%; /* = 100 / 3 */
   }
-  .hex:nth-child(3n+3){ /* first hexagon of even rows */
+
+  .hex-home {
+    width: 80%; /* = 100 / 3 */
+  }
+
+
+  .hex:nth-child(3n+3), .hex-home:nth-child(3n+3),.hex-cat:nth-child(3n+3){ /* first hexagon of even rows */
     margin-left:25%;  /* = width of .hex / 2  to indent even rows */
   }
 }
