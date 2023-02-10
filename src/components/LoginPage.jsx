@@ -2,19 +2,21 @@ import UserPage from './UserPage'
 import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { UserContext } from '../contexts/User';
-import { getUser } from '../utils/api';
+import { getUser, userLogin } from '../utils/api';
 
 const LoginPage = () => {
     const { user, setUser } = useContext(UserContext);
     const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
 
         const handleSubmit = (e) => {
             e.preventDefault();
-            return getUser(username)
+            return userLogin({username: username, password: password})
             .then((res) => {
-                let login = {loggedIn: true, username: res.user.username, name: res.user.name, avatar_url: res.user.avatar_url}
-                setUser(login)
+                console.log(res)
+                // let login = {loggedIn: true, username: res.user.username, name: res.user.name, avatar_url: res.user.avatar_url}
+                // setUser(login)
             })
             .catch((err) => {
                 console.error(err);
@@ -34,7 +36,7 @@ const LoginPage = () => {
                 </div>
                 <div className='flex-input'>
                     <label htmlFor="ursername">Password:</label>
-                    <input type="textarea" id="password" placeholder="Password" />
+                    <input type="textarea" id="password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
                 </div>
                 <div>
                     <button type="submit">Login</button>
