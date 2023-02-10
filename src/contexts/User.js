@@ -9,6 +9,7 @@ export const UserProvider = ({ children }) => {
         username: '',
         name: '',
         avatar_url: '',
+        email: ''
     });
 
     return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
