@@ -79,7 +79,7 @@ export const postUser = (user) => {
 }
 
 export const userLogin = (credentials) => {
-    return boardGamesApi.post('/login', credentials)
+    return boardGamesApi.post('/login-user', credentials)
     .then((res) => {
         return res
     })

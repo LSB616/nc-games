@@ -12,11 +12,11 @@ const LoginPage = () => {
 
         const handleSubmit = (e) => {
             e.preventDefault();
-            return userLogin({username: username, password: password})
+            return userLogin({"username": username, "password": password})
             .then((res) => {
-                console.log(res)
-                // let login = {loggedIn: true, username: res.user.username, name: res.user.name, avatar_url: res.user.avatar_url}
-                // setUser(login)
+                const user = res.data.user
+                let login = {loggedIn: true, username: user.username, name: user.name, avatar_url: user.avatar_url, email: user.email}
+                setUser(login)
             })
             .catch((err) => {
                 console.error(err);
