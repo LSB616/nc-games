@@ -77,3 +77,13 @@ export const patchCommentByCommentId = (comment_id, increment) => {
 export const postUser = (user) => {
     return boardGamesApi.post(`/create-account`, user)
 }
+
+export const userLogin = (credentials) => {
+    return boardGamesApi.post('/login-user', credentials)
+    .then((res) => {
+        return res
+    })
+    .catch((err) => {
+        console.error(err)
+    });
+};

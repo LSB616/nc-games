@@ -10,6 +10,8 @@ const CreateAccount = () => {
     const [username, setUsername] = useState('');
     const [name, setName] = useState('');
     const [avatar, setAvatar] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState();
     const [accountCreated, setAccountCreated] = useState();
 
@@ -20,9 +22,9 @@ const CreateAccount = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        return postUser({username: username, name: name, avatar_url: avatar})
+        return postUser({username: username, name: name, avatar_url: avatar, email: email, password: password})
         .then((res) => {
-            let login = {loggedIn: true, username: res.data.username, name: res.data.name, avatar_url: res.data.avatar_url}
+            let login = {loggedIn: true, username: res.data.username, name: res.data.name, avatar_url: res.data.avatar_url, email: res.data.email}
             setAccountCreated(true);
             setUser(login);
         })
@@ -44,6 +46,10 @@ const CreateAccount = () => {
             <input type="text" id="name" value={name} onChange={(e) => {setName(e.target.value)}} required></input>
             <label>Avatar:</label>
             <input type="text" id="avatar" value={avatar} onChange={(e) => {setAvatar(e.target.value)}} required></input>
+            <label>Email:</label>
+            <input type="text" id="avatar" value={email} onChange={(e) => {setEmail(e.target.value)}} required></input>
+            <label>Password:</label>
+            <input type="text" id="avatar" value={password} onChange={(e) => {setPassword(e.target.value)}} required></input>
             <button type="submit">Submit</button>
         </form>
     )
