@@ -31,6 +31,7 @@ return (
     <Link to='/categories' className='navbar-links'>Categories</Link>
     <img src={user.avatar_url} className="navbar-avatar"/>
     <Link to={`/users/${user.username}`} className='navbar-links-username'>{user.name}!</Link>
+    <Link className="signout" to='/signout'>Sign Out</Link>
     </nav>
     </div>
     )
