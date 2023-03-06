@@ -16,6 +16,7 @@ import ReviewAdder from './components/ReviewAdder';
 import ReviewEditPage from "./components/ReviewEditPage";
 import CreateAccount from './components/CreateAccount';
 import Test from './components/Test';
+import Signout from './components/Signout';
 
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/reviews/:review_id/edit-review" element={<ReviewEditPage />} />
         <Route path="/create-account" element={<CreateAccount />}/>
         <Route path="/test-page" element={<Test />} />
+        <Route path="/signout" element={<Signout />} />
       </Routes>
       <Footer />
     </div>
