@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { UserContext } from '../contexts/User';
 
 const Navbar = () => {
-const { user } = useContext(UserContext);
+const { user, setUser } = useContext(UserContext);
 
 if (!user.loggedIn) {
 return (

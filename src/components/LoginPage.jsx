@@ -36,7 +36,7 @@ const LoginPage = () => {
                 </div>
                 <div className='flex-input'>
                     <label htmlFor="ursername">Password:</label>
-                    <input type="textarea" id="password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
+                    <input type="password" id="password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
                 </div>
                 <div>
                     <button type="submit">Login</button>
